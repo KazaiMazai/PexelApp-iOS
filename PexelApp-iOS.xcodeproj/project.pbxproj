@@ -64,7 +64,6 @@
 		EAD322A52C600F5400D6B3A5 /* codegen_strings_and_assets.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = codegen_strings_and_assets.sh; sourceTree = "<group>"; };
 		EAD322A62C600F5400D6B3A5 /* env_vars_export.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = env_vars_export.sh; sourceTree = "<group>"; };
 		EAD322AB2C60106600D6B3A5 /* sourcery */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = sourcery; sourceTree = "<group>"; };
-		EAD322B02C60168900D6B3A5 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Resources; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +153,6 @@
 		EAD322812C5FFBD300D6B3A5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				EAD322B02C60168900D6B3A5 /* Resources */,
 				EAD3228C2C600B4400D6B3A5 /* ResourcesCatalog */,
 				EAD3228B2C60051600D6B3A5 /* DesignSystem */,
 				EAD322882C60010600D6B3A5 /* SwiftUIExtensions */,
@@ -371,6 +369,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		EAD322AD2C6010B300D6B3A5 /* EnvironmentVars Init */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -410,6 +409,7 @@
 		};
 		EAD322AF2C6012D200D6B3A5 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
