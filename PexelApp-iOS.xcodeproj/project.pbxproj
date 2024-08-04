@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EAD322572C5FFA9800D6B3A5 /* PexelApp_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322562C5FFA9800D6B3A5 /* PexelApp_iOSApp.swift */; };
+		EAD322572C5FFA9800D6B3A5 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322562C5FFA9800D6B3A5 /* AppLauncher.swift */; };
 		EAD322592C5FFA9800D6B3A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322582C5FFA9800D6B3A5 /* ContentView.swift */; };
 		EAD3225B2C5FFA9900D6B3A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */; };
 		EAD3225E2C5FFA9900D6B3A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD3225D2C5FFA9900D6B3A5 /* Preview Assets.xcassets */; };
 		EAD322682C5FFA9900D6B3A5 /* PexelApp_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322672C5FFA9900D6B3A5 /* PexelApp_iOSTests.swift */; };
 		EAD322722C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322712C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift */; };
 		EAD322742C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322732C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift */; };
+		EAD3229F2C600E9700D6B3A5 /* EnvironmentVars.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD3229B2C600E9700D6B3A5 /* EnvironmentVars.generated.swift */; };
+		EAD322A02C600E9700D6B3A5 /* EnvironmentVars.stencil in Resources */ = {isa = PBXBuildFile; fileRef = EAD3229C2C600E9700D6B3A5 /* EnvironmentVars.stencil */; };
+		EAD322A12C600E9700D6B3A5 /* env.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EAD3229D2C600E9700D6B3A5 /* env.xcconfig */; };
+		EAD322A22C600E9700D6B3A5 /* env-example.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EAD3229E2C600E9700D6B3A5 /* env-example.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		EAD322532C5FFA9800D6B3A5 /* PexelApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PexelApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAD322562C5FFA9800D6B3A5 /* PexelApp_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp_iOSApp.swift; sourceTree = "<group>"; };
+		EAD322562C5FFA9800D6B3A5 /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
 		EAD322582C5FFA9800D6B3A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAD3225D2C5FFA9900D6B3A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -44,6 +48,23 @@
 		EAD3226D2C5FFA9900D6B3A5 /* PexelApp-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PexelApp-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD322712C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp_iOSUITests.swift; sourceTree = "<group>"; };
 		EAD322732C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EAD322862C5FFD9200D6B3A5 /* PexelAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PexelAPI; sourceTree = "<group>"; };
+		EAD322872C6000D000D6B3A5 /* UIKitExtensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UIKitExtensions; sourceTree = "<group>"; };
+		EAD322882C60010600D6B3A5 /* SwiftUIExtensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SwiftUIExtensions; sourceTree = "<group>"; };
+		EAD3228B2C60051600D6B3A5 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DesignSystem; sourceTree = "<group>"; };
+		EAD3228C2C600B4400D6B3A5 /* ResourcesCatalog */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ResourcesCatalog; sourceTree = "<group>"; };
+		EAD3228F2C600C0D00D6B3A5 /* swiftgen */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = swiftgen; sourceTree = "<group>"; };
+		EAD322902C600C0D00D6B3A5 /* SwiftGen_SwiftGenCLI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SwiftGen_SwiftGenCLI.bundle; sourceTree = "<group>"; };
+		EAD322982C600E1C00D6B3A5 /* env_vars_codegen.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = env_vars_codegen.sh; sourceTree = "<group>"; };
+		EAD3229B2C600E9700D6B3A5 /* EnvironmentVars.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentVars.generated.swift; sourceTree = "<group>"; };
+		EAD3229C2C600E9700D6B3A5 /* EnvironmentVars.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EnvironmentVars.stencil; sourceTree = "<group>"; };
+		EAD3229D2C600E9700D6B3A5 /* env.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
+		EAD3229E2C600E9700D6B3A5 /* env-example.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "env-example.xcconfig"; sourceTree = "<group>"; };
+		EAD322A42C600F5400D6B3A5 /* env_vars_init.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = env_vars_init.sh; sourceTree = "<group>"; };
+		EAD322A52C600F5400D6B3A5 /* codegen_strings_and_assets.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = codegen_strings_and_assets.sh; sourceTree = "<group>"; };
+		EAD322A62C600F5400D6B3A5 /* env_vars_export.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = env_vars_export.sh; sourceTree = "<group>"; };
+		EAD322AB2C60106600D6B3A5 /* sourcery */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = sourcery; sourceTree = "<group>"; };
+		EAD322B02C60168900D6B3A5 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Resources; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +95,8 @@
 		EAD3224A2C5FFA9800D6B3A5 = {
 			isa = PBXGroup;
 			children = (
+				EAD322812C5FFBD300D6B3A5 /* Packages */,
+				EAD3228D2C600BDF00D6B3A5 /* PexelApp-Tooling */,
 				EAD322552C5FFA9800D6B3A5 /* PexelApp-iOS */,
 				EAD322662C5FFA9900D6B3A5 /* PexelApp-iOSTests */,
 				EAD322702C5FFA9900D6B3A5 /* PexelApp-iOSUITests */,
@@ -94,7 +117,8 @@
 		EAD322552C5FFA9800D6B3A5 /* PexelApp-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				EAD322562C5FFA9800D6B3A5 /* PexelApp_iOSApp.swift */,
+				EAD322832C5FFC4700D6B3A5 /* Application */,
+				EAD322852C5FFC7200D6B3A5 /* Configuration */,
 				EAD322582C5FFA9800D6B3A5 /* ContentView.swift */,
 				EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */,
 				EAD3225C2C5FFA9900D6B3A5 /* Preview Content */,
@@ -127,6 +151,92 @@
 			path = "PexelApp-iOSUITests";
 			sourceTree = "<group>";
 		};
+		EAD322812C5FFBD300D6B3A5 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				EAD322B02C60168900D6B3A5 /* Resources */,
+				EAD3228C2C600B4400D6B3A5 /* ResourcesCatalog */,
+				EAD3228B2C60051600D6B3A5 /* DesignSystem */,
+				EAD322882C60010600D6B3A5 /* SwiftUIExtensions */,
+				EAD322872C6000D000D6B3A5 /* UIKitExtensions */,
+				EAD322862C5FFD9200D6B3A5 /* PexelAPI */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		EAD322832C5FFC4700D6B3A5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				EAD322562C5FFA9800D6B3A5 /* AppLauncher.swift */,
+				EAD322892C60019500D6B3A5 /* Features */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		EAD322852C5FFC7200D6B3A5 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				EAD3229A2C600E2600D6B3A5 /* EnvironmentVars */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		EAD322892C60019500D6B3A5 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		EAD3228D2C600BDF00D6B3A5 /* PexelApp-Tooling */ = {
+			isa = PBXGroup;
+			children = (
+				EAD322972C600DD200D6B3A5 /* Scripts */,
+				EAD322932C600C1B00D6B3A5 /* Sourcery */,
+				EAD3228E2C600BEF00D6B3A5 /* SwiftGen */,
+			);
+			path = "PexelApp-Tooling";
+			sourceTree = "<group>";
+		};
+		EAD3228E2C600BEF00D6B3A5 /* SwiftGen */ = {
+			isa = PBXGroup;
+			children = (
+				EAD3228F2C600C0D00D6B3A5 /* swiftgen */,
+				EAD322902C600C0D00D6B3A5 /* SwiftGen_SwiftGenCLI.bundle */,
+			);
+			path = SwiftGen;
+			sourceTree = "<group>";
+		};
+		EAD322932C600C1B00D6B3A5 /* Sourcery */ = {
+			isa = PBXGroup;
+			children = (
+				EAD322AB2C60106600D6B3A5 /* sourcery */,
+			);
+			path = Sourcery;
+			sourceTree = "<group>";
+		};
+		EAD322972C600DD200D6B3A5 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				EAD322982C600E1C00D6B3A5 /* env_vars_codegen.sh */,
+				EAD322A52C600F5400D6B3A5 /* codegen_strings_and_assets.sh */,
+				EAD322A62C600F5400D6B3A5 /* env_vars_export.sh */,
+				EAD322A42C600F5400D6B3A5 /* env_vars_init.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		EAD3229A2C600E2600D6B3A5 /* EnvironmentVars */ = {
+			isa = PBXGroup;
+			children = (
+				EAD3229E2C600E9700D6B3A5 /* env-example.xcconfig */,
+				EAD3229D2C600E9700D6B3A5 /* env.xcconfig */,
+				EAD3229B2C600E9700D6B3A5 /* EnvironmentVars.generated.swift */,
+				EAD3229C2C600E9700D6B3A5 /* EnvironmentVars.stencil */,
+			);
+			path = EnvironmentVars;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +244,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EAD322772C5FFA9900D6B3A5 /* Build configuration list for PBXNativeTarget "PexelApp-iOS" */;
 			buildPhases = (
+				EAD322AD2C6010B300D6B3A5 /* EnvironmentVars Init */,
+				EAD322AE2C60110700D6B3A5 /* EnvironmentVars CodeGen */,
+				EAD322AF2C6012D200D6B3A5 /* SwiftGen */,
 				EAD3224F2C5FFA9800D6B3A5 /* Sources */,
 				EAD322502C5FFA9800D6B3A5 /* Frameworks */,
 				EAD322512C5FFA9800D6B3A5 /* Resources */,
@@ -231,7 +344,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAD322A02C600E9700D6B3A5 /* EnvironmentVars.stencil in Resources */,
 				EAD3225E2C5FFA9900D6B3A5 /* Preview Assets.xcassets in Resources */,
+				EAD322A22C600E9700D6B3A5 /* env-example.xcconfig in Resources */,
+				EAD322A12C600E9700D6B3A5 /* env.xcconfig in Resources */,
 				EAD3225B2C5FFA9900D6B3A5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,13 +368,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EAD322AD2C6010B300D6B3A5 /* EnvironmentVars Init */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "EnvironmentVars Init";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PROJECT_DIR/PexelApp-Tooling/Scripts/env_vars_init.sh\"\n";
+		};
+		EAD322AE2C60110700D6B3A5 /* EnvironmentVars CodeGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PROJECT_DIR}/PexelApp-iOS/Configuration/EnvironmentVars/EnvironmentVars.stencil",
+				"${PROJECT_DIR}/PexelApp-iOS/Configuration/EnvironmentVars/env.xcconfig",
+			);
+			name = "EnvironmentVars CodeGen";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${SRCROOT}/PexelApp-iOS/Configuration/EnvironmentVars/EnvironmentVars.generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PROJECT_DIR/PexelApp-Tooling/Scripts/env_vars_codegen.sh\"\n";
+		};
+		EAD322AF2C6012D200D6B3A5 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PROJECT_DIR/PexelApp-Tooling/Scripts/codegen_strings_and_assets.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EAD3224F2C5FFA9800D6B3A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EAD322592C5FFA9800D6B3A5 /* ContentView.swift in Sources */,
-				EAD322572C5FFA9800D6B3A5 /* PexelApp_iOSApp.swift in Sources */,
+				EAD322572C5FFA9800D6B3A5 /* AppLauncher.swift in Sources */,
+				EAD3229F2C600E9700D6B3A5 /* EnvironmentVars.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +601,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PexelApp-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = ZC6RHMUG6E;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -453,6 +631,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PexelApp-iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = ZC6RHMUG6E;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
