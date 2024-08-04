@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EAD322572C5FFA9800D6B3A5 /* PexelApp_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322562C5FFA9800D6B3A5 /* PexelApp_iOSApp.swift */; };
+		EAD322592C5FFA9800D6B3A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322582C5FFA9800D6B3A5 /* ContentView.swift */; };
+		EAD3225B2C5FFA9900D6B3A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */; };
+		EAD3225E2C5FFA9900D6B3A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD3225D2C5FFA9900D6B3A5 /* Preview Assets.xcassets */; };
+		EAD322682C5FFA9900D6B3A5 /* PexelApp_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322672C5FFA9900D6B3A5 /* PexelApp_iOSTests.swift */; };
+		EAD322722C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322712C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift */; };
+		EAD322742C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322732C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EAD322642C5FFA9900D6B3A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD3224B2C5FFA9800D6B3A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAD322522C5FFA9800D6B3A5;
+			remoteInfo = "PexelApp-iOS";
+		};
+		EAD3226E2C5FFA9900D6B3A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD3224B2C5FFA9800D6B3A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAD322522C5FFA9800D6B3A5;
+			remoteInfo = "PexelApp-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EAD322532C5FFA9800D6B3A5 /* PexelApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PexelApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD322562C5FFA9800D6B3A5 /* PexelApp_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp_iOSApp.swift; sourceTree = "<group>"; };
+		EAD322582C5FFA9800D6B3A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EAD3225D2C5FFA9900D6B3A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EAD322632C5FFA9900D6B3A5 /* PexelApp-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PexelApp-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD322672C5FFA9900D6B3A5 /* PexelApp_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp_iOSTests.swift; sourceTree = "<group>"; };
+		EAD3226D2C5FFA9900D6B3A5 /* PexelApp-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PexelApp-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD322712C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp_iOSUITests.swift; sourceTree = "<group>"; };
+		EAD322732C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EAD322502C5FFA9800D6B3A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD322602C5FFA9900D6B3A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD3226A2C5FFA9900D6B3A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EAD3224A2C5FFA9800D6B3A5 = {
+			isa = PBXGroup;
+			children = (
+				EAD322552C5FFA9800D6B3A5 /* PexelApp-iOS */,
+				EAD322662C5FFA9900D6B3A5 /* PexelApp-iOSTests */,
+				EAD322702C5FFA9900D6B3A5 /* PexelApp-iOSUITests */,
+				EAD322542C5FFA9800D6B3A5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EAD322542C5FFA9800D6B3A5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAD322532C5FFA9800D6B3A5 /* PexelApp-iOS.app */,
+				EAD322632C5FFA9900D6B3A5 /* PexelApp-iOSTests.xctest */,
+				EAD3226D2C5FFA9900D6B3A5 /* PexelApp-iOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAD322552C5FFA9800D6B3A5 /* PexelApp-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EAD322562C5FFA9800D6B3A5 /* PexelApp_iOSApp.swift */,
+				EAD322582C5FFA9800D6B3A5 /* ContentView.swift */,
+				EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */,
+				EAD3225C2C5FFA9900D6B3A5 /* Preview Content */,
+			);
+			path = "PexelApp-iOS";
+			sourceTree = "<group>";
+		};
+		EAD3225C2C5FFA9900D6B3A5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EAD3225D2C5FFA9900D6B3A5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EAD322662C5FFA9900D6B3A5 /* PexelApp-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				EAD322672C5FFA9900D6B3A5 /* PexelApp_iOSTests.swift */,
+			);
+			path = "PexelApp-iOSTests";
+			sourceTree = "<group>";
+		};
+		EAD322702C5FFA9900D6B3A5 /* PexelApp-iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EAD322712C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift */,
+				EAD322732C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift */,
+			);
+			path = "PexelApp-iOSUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EAD322522C5FFA9800D6B3A5 /* PexelApp-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAD322772C5FFA9900D6B3A5 /* Build configuration list for PBXNativeTarget "PexelApp-iOS" */;
+			buildPhases = (
+				EAD3224F2C5FFA9800D6B3A5 /* Sources */,
+				EAD322502C5FFA9800D6B3A5 /* Frameworks */,
+				EAD322512C5FFA9800D6B3A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PexelApp-iOS";
+			productName = "PexelApp-iOS";
+			productReference = EAD322532C5FFA9800D6B3A5 /* PexelApp-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EAD322622C5FFA9900D6B3A5 /* PexelApp-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAD3227A2C5FFA9900D6B3A5 /* Build configuration list for PBXNativeTarget "PexelApp-iOSTests" */;
+			buildPhases = (
+				EAD3225F2C5FFA9900D6B3A5 /* Sources */,
+				EAD322602C5FFA9900D6B3A5 /* Frameworks */,
+				EAD322612C5FFA9900D6B3A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAD322652C5FFA9900D6B3A5 /* PBXTargetDependency */,
+			);
+			name = "PexelApp-iOSTests";
+			productName = "PexelApp-iOSTests";
+			productReference = EAD322632C5FFA9900D6B3A5 /* PexelApp-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EAD3226C2C5FFA9900D6B3A5 /* PexelApp-iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAD3227D2C5FFA9900D6B3A5 /* Build configuration list for PBXNativeTarget "PexelApp-iOSUITests" */;
+			buildPhases = (
+				EAD322692C5FFA9900D6B3A5 /* Sources */,
+				EAD3226A2C5FFA9900D6B3A5 /* Frameworks */,
+				EAD3226B2C5FFA9900D6B3A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAD3226F2C5FFA9900D6B3A5 /* PBXTargetDependency */,
+			);
+			name = "PexelApp-iOSUITests";
+			productName = "PexelApp-iOSUITests";
+			productReference = EAD3226D2C5FFA9900D6B3A5 /* PexelApp-iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EAD3224B2C5FFA9800D6B3A5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					EAD322522C5FFA9800D6B3A5 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					EAD322622C5FFA9900D6B3A5 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = EAD322522C5FFA9800D6B3A5;
+					};
+					EAD3226C2C5FFA9900D6B3A5 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = EAD322522C5FFA9800D6B3A5;
+					};
+				};
+			};
+			buildConfigurationList = EAD3224E2C5FFA9800D6B3A5 /* Build configuration list for PBXProject "PexelApp-iOS" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EAD3224A2C5FFA9800D6B3A5;
+			productRefGroup = EAD322542C5FFA9800D6B3A5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EAD322522C5FFA9800D6B3A5 /* PexelApp-iOS */,
+				EAD322622C5FFA9900D6B3A5 /* PexelApp-iOSTests */,
+				EAD3226C2C5FFA9900D6B3A5 /* PexelApp-iOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EAD322512C5FFA9800D6B3A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD3225E2C5FFA9900D6B3A5 /* Preview Assets.xcassets in Resources */,
+				EAD3225B2C5FFA9900D6B3A5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD322612C5FFA9900D6B3A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD3226B2C5FFA9900D6B3A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EAD3224F2C5FFA9800D6B3A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD322592C5FFA9800D6B3A5 /* ContentView.swift in Sources */,
+				EAD322572C5FFA9800D6B3A5 /* PexelApp_iOSApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD3225F2C5FFA9900D6B3A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD322682C5FFA9900D6B3A5 /* PexelApp_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD322692C5FFA9900D6B3A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD322722C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift in Sources */,
+				EAD322742C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EAD322652C5FFA9900D6B3A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAD322522C5FFA9800D6B3A5 /* PexelApp-iOS */;
+			targetProxy = EAD322642C5FFA9900D6B3A5 /* PBXContainerItemProxy */;
+		};
+		EAD3226F2C5FFA9900D6B3A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAD322522C5FFA9800D6B3A5 /* PexelApp-iOS */;
+			targetProxy = EAD3226E2C5FFA9900D6B3A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EAD322752C5FFA9900D6B3A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EAD322762C5FFA9900D6B3A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EAD322782C5FFA9900D6B3A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PexelApp-iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = ZC6RHMUG6E;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kazaimazai.PexelApp-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EAD322792C5FFA9900D6B3A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PexelApp-iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = ZC6RHMUG6E;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kazaimazai.PexelApp-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EAD3227B2C5FFA9900D6B3A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZC6RHMUG6E;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kazaimazai.PexelApp-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PexelApp-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PexelApp-iOS";
+			};
+			name = Debug;
+		};
+		EAD3227C2C5FFA9900D6B3A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZC6RHMUG6E;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kazaimazai.PexelApp-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PexelApp-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PexelApp-iOS";
+			};
+			name = Release;
+		};
+		EAD3227E2C5FFA9900D6B3A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZC6RHMUG6E;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kazaimazai.PexelApp-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PexelApp-iOS";
+			};
+			name = Debug;
+		};
+		EAD3227F2C5FFA9900D6B3A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZC6RHMUG6E;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kazaimazai.PexelApp-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PexelApp-iOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EAD3224E2C5FFA9800D6B3A5 /* Build configuration list for PBXProject "PexelApp-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAD322752C5FFA9900D6B3A5 /* Debug */,
+				EAD322762C5FFA9900D6B3A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAD322772C5FFA9900D6B3A5 /* Build configuration list for PBXNativeTarget "PexelApp-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAD322782C5FFA9900D6B3A5 /* Debug */,
+				EAD322792C5FFA9900D6B3A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAD3227A2C5FFA9900D6B3A5 /* Build configuration list for PBXNativeTarget "PexelApp-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAD3227B2C5FFA9900D6B3A5 /* Debug */,
+				EAD3227C2C5FFA9900D6B3A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAD3227D2C5FFA9900D6B3A5 /* Build configuration list for PBXNativeTarget "PexelApp-iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAD3227E2C5FFA9900D6B3A5 /* Debug */,
+				EAD3227F2C5FFA9900D6B3A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EAD3224B2C5FFA9800D6B3A5 /* Project object */;
+}
