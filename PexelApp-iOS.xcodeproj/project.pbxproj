@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EAD322572C5FFA9800D6B3A5 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322562C5FFA9800D6B3A5 /* AppLauncher.swift */; };
+		EAD322572C5FFA9800D6B3A5 /* PexelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322562C5FFA9800D6B3A5 /* PexelApp.swift */; };
 		EAD322592C5FFA9800D6B3A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322582C5FFA9800D6B3A5 /* ContentView.swift */; };
 		EAD3225B2C5FFA9900D6B3A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */; };
 		EAD3225E2C5FFA9900D6B3A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD3225D2C5FFA9900D6B3A5 /* Preview Assets.xcassets */; };
@@ -39,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		EAD322532C5FFA9800D6B3A5 /* PexelApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PexelApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAD322562C5FFA9800D6B3A5 /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
+		EAD322562C5FFA9800D6B3A5 /* PexelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp.swift; sourceTree = "<group>"; };
 		EAD322582C5FFA9800D6B3A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAD3225D2C5FFA9900D6B3A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -91,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA8505AD2C602D6800BD1239 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EAD3225C2C5FFA9900D6B3A5 /* Preview Content */,
+				EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		EAD3224A2C5FFA9800D6B3A5 = {
 			isa = PBXGroup;
 			children = (
@@ -119,8 +128,7 @@
 				EAD322832C5FFC4700D6B3A5 /* Application */,
 				EAD322852C5FFC7200D6B3A5 /* Configuration */,
 				EAD322582C5FFA9800D6B3A5 /* ContentView.swift */,
-				EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */,
-				EAD3225C2C5FFA9900D6B3A5 /* Preview Content */,
+				EA8505AD2C602D6800BD1239 /* Resources */,
 			);
 			path = "PexelApp-iOS";
 			sourceTree = "<group>";
@@ -165,8 +173,7 @@
 		EAD322832C5FFC4700D6B3A5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				EAD322562C5FFA9800D6B3A5 /* AppLauncher.swift */,
-				EAD322892C60019500D6B3A5 /* Features */,
+				EAD322562C5FFA9800D6B3A5 /* PexelApp.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -177,13 +184,6 @@
 				EAD3229A2C600E2600D6B3A5 /* EnvironmentVars */,
 			);
 			path = Configuration;
-			sourceTree = "<group>";
-		};
-		EAD322892C60019500D6B3A5 /* Features */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Features;
 			sourceTree = "<group>";
 		};
 		EAD3228D2C600BDF00D6B3A5 /* PexelApp-Tooling */ = {
@@ -434,7 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAD322592C5FFA9800D6B3A5 /* ContentView.swift in Sources */,
-				EAD322572C5FFA9800D6B3A5 /* AppLauncher.swift in Sources */,
+				EAD322572C5FFA9800D6B3A5 /* PexelApp.swift in Sources */,
 				EAD3229F2C600E9700D6B3A5 /* EnvironmentVars.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,7 +598,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PexelApp-iOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PexelApp-iOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = ZC6RHMUG6E;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -628,7 +628,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PexelApp-iOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PexelApp-iOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = ZC6RHMUG6E;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
