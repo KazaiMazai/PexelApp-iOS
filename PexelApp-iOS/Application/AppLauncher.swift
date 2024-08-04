@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct PexelApp_iOSApp: App {
+struct AppLauncher: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+           ContentView()
         }
     }
 }
