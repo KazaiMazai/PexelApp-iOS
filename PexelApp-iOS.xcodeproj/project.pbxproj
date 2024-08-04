@@ -14,10 +14,6 @@
 		EAD322682C5FFA9900D6B3A5 /* PexelApp_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322672C5FFA9900D6B3A5 /* PexelApp_iOSTests.swift */; };
 		EAD322722C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322712C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift */; };
 		EAD322742C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322732C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift */; };
-		EAD3229F2C600E9700D6B3A5 /* EnvironmentVars.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD3229B2C600E9700D6B3A5 /* EnvironmentVars.generated.swift */; };
-		EAD322A02C600E9700D6B3A5 /* EnvironmentVars.stencil in Resources */ = {isa = PBXBuildFile; fileRef = EAD3229C2C600E9700D6B3A5 /* EnvironmentVars.stencil */; };
-		EAD322A12C600E9700D6B3A5 /* env.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EAD3229D2C600E9700D6B3A5 /* env.xcconfig */; };
-		EAD322A22C600E9700D6B3A5 /* env-example.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EAD3229E2C600E9700D6B3A5 /* env-example.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA8505AE2C602FC600BD1239 /* MainFeed */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MainFeed; sourceTree = "<group>"; };
 		EAD322532C5FFA9800D6B3A5 /* PexelApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PexelApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD322562C5FFA9800D6B3A5 /* PexelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp.swift; sourceTree = "<group>"; };
 		EAD322582C5FFA9800D6B3A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,9 +53,7 @@
 		EAD3228F2C600C0D00D6B3A5 /* swiftgen */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = swiftgen; sourceTree = "<group>"; };
 		EAD322902C600C0D00D6B3A5 /* SwiftGen_SwiftGenCLI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SwiftGen_SwiftGenCLI.bundle; sourceTree = "<group>"; };
 		EAD322982C600E1C00D6B3A5 /* env_vars_codegen.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = env_vars_codegen.sh; sourceTree = "<group>"; };
-		EAD3229B2C600E9700D6B3A5 /* EnvironmentVars.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentVars.generated.swift; sourceTree = "<group>"; };
 		EAD3229C2C600E9700D6B3A5 /* EnvironmentVars.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EnvironmentVars.stencil; sourceTree = "<group>"; };
-		EAD3229D2C600E9700D6B3A5 /* env.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
 		EAD3229E2C600E9700D6B3A5 /* env-example.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "env-example.xcconfig"; sourceTree = "<group>"; };
 		EAD322A42C600F5400D6B3A5 /* env_vars_init.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = env_vars_init.sh; sourceTree = "<group>"; };
 		EAD322A52C600F5400D6B3A5 /* codegen_strings_and_assets.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = codegen_strings_and_assets.sh; sourceTree = "<group>"; };
@@ -161,6 +156,7 @@
 		EAD322812C5FFBD300D6B3A5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				EA8505AE2C602FC600BD1239 /* MainFeed */,
 				EAD3228C2C600B4400D6B3A5 /* ResourcesCatalog */,
 				EAD3228B2C60051600D6B3A5 /* DesignSystem */,
 				EAD322882C60010600D6B3A5 /* SwiftUIExtensions */,
@@ -228,8 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				EAD3229E2C600E9700D6B3A5 /* env-example.xcconfig */,
-				EAD3229D2C600E9700D6B3A5 /* env.xcconfig */,
-				EAD3229B2C600E9700D6B3A5 /* EnvironmentVars.generated.swift */,
 				EAD3229C2C600E9700D6B3A5 /* EnvironmentVars.stencil */,
 			);
 			path = EnvironmentVars;
@@ -342,10 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD322A02C600E9700D6B3A5 /* EnvironmentVars.stencil in Resources */,
 				EAD3225E2C5FFA9900D6B3A5 /* Preview Assets.xcassets in Resources */,
-				EAD322A22C600E9700D6B3A5 /* env-example.xcconfig in Resources */,
-				EAD322A12C600E9700D6B3A5 /* env.xcconfig in Resources */,
 				EAD3225B2C5FFA9900D6B3A5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,7 +426,6 @@
 			files = (
 				EAD322592C5FFA9800D6B3A5 /* ContentView.swift in Sources */,
 				EAD322572C5FFA9800D6B3A5 /* PexelApp.swift in Sources */,
-				EAD3229F2C600E9700D6B3A5 /* EnvironmentVars.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
