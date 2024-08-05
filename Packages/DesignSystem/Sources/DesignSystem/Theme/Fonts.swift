@@ -27,7 +27,6 @@ public extension ThemeFonts {
         Font.title3
     }
     
-    
     static var body: Font {
         Font.body
     }

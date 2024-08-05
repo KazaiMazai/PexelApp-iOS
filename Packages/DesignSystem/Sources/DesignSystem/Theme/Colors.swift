@@ -16,8 +16,12 @@ public extension Color {
 public enum ThemeColors { }
 
 public extension ThemeColors {
+    static var accent: Color {
+        .accentColor
+    }
+    
     static var title: Color {
-        .blue
+        .black
     }
     
     static var subtitle: Color {
@@ -37,19 +41,23 @@ public extension ThemeColors {
     }
     
     static var shadow: Color {
-        .black.opacity(0.3)
+        .black.opacity(0.1)
     }
 }
  
 public enum ThemeShapeStyleColors { }
 
-extension ShapeStyle where Self == Color {
+public extension ShapeStyle where Self == Color {
    static var theme: ThemeShapeStyleColors.Type {
        ThemeShapeStyleColors.self
    }
 }
 
 public extension ThemeShapeStyleColors {
+    static var accent: some ShapeStyle {
+        Color.theme.accent
+    }
+    
     static var title: some ShapeStyle {
         Color.theme.title
     }

@@ -34,7 +34,11 @@ public extension Shadow {
 }
 
 public extension ThemeShadows {
-    static var dropShadow: Shadow {
-        Shadow.init(color: .theme.shadow,  radius: 30, x: 10, y: 10)
+    static var largeDropShadow: Shadow {
+        Shadow.init(color: .theme.shadow, radius: 50, x: 0, y: 10)
+    }
+    
+    static var smallDropShadow: Shadow {
+        Shadow.init(color: .theme.shadow, radius: 20, x: 0, y: 10)
     }
 }
