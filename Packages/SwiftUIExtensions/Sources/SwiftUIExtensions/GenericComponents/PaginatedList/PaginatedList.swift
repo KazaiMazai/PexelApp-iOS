@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-public struct PaginatedList<Data,
+@MainActor
+public struct PaginatedList<Data: Hashable,
                             Cursor,
                             Content: View,
                             Footer: View,
@@ -23,7 +24,7 @@ public struct PaginatedList<Data,
     private(set) var empty: () -> Empty
     
     private(set) var fetch: (Cursor?) async throws -> (items: [Data], cursor: Cursor?)
-    
+   
     @State private var state: PaginatedListState<Data, Cursor> = .initial
     
     public var body: some View {
@@ -38,7 +39,7 @@ public struct PaginatedList<Data,
                 Task { await initialFetch() }
             }
         case .content(let items, _, let nextPage):
-            makeContent(items, nextPage: nextPage)
+            makeContent(items.elements, nextPage: nextPage)
         case .error(error: let error):
             errorView(error)
         }
@@ -63,7 +64,8 @@ public struct PaginatedList<Data,
 private extension PaginatedList {
     
     func makeContent(_ items: [Data],
-                             nextPage: NextPageState) -> some View {
+                     nextPage: NextPageState) -> some View {
+      
         List {
             content(items)
             
@@ -74,7 +76,7 @@ private extension PaginatedList {
                 Button(
                     action: {
                         state.setNextPageLoading()
-                        Task { try await fetchNextPage() }
+                        Task { await fetchNextPage() }
                     },
                     label: {
                         footer(nextPage)
@@ -83,12 +85,11 @@ private extension PaginatedList {
             case .none:
                 footer(nextPage).onAppear {
                     state.setNextPageLoading()
-                    Task { try await fetchNextPage() }
+                    Task { await fetchNextPage() }
                 }
             }
         }
         .scrollDismissesKeyboard(.immediately)
-        .scrollContentBackground(.hidden)
         .listStyle(.plain)
     }
 }
@@ -104,7 +105,7 @@ private extension PaginatedList {
         }
     }
     
-    func fetchNextPage() async throws {
+    func fetchNextPage() async {
         do {
             guard let nextCursor = state.nextCursor else {
                 state.appendItems([], cursor: nil)
@@ -114,7 +115,7 @@ private extension PaginatedList {
             let result = try await fetch(nextCursor)
             state.appendItems(result.items, cursor: result.cursor)
         } catch {
-            state.setError(error)
+            state.setNextPageLoadingError(error)
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Collections
 
 public enum NextPageState {
     case none
@@ -13,10 +14,10 @@ public enum NextPageState {
     case error(Error)
 }
 
-enum PaginatedListState<T, Cursor> {
+enum PaginatedListState<T: Hashable, Cursor> {
     case initial
     case loading
-    case content([T], nextCursor: Cursor?, nextPage: NextPageState)
+    case content(OrderedSet<T>, nextCursor: Cursor?, nextPage: NextPageState)
     case empty
     case error(error: Error)
 }
@@ -61,8 +62,7 @@ extension PaginatedListState {
 
 extension PaginatedListState {
     mutating func setItems(_ items: [T], cursor: Cursor?) {
-       self = items.isEmpty ? .empty
-        : .content(items, nextCursor: cursor, nextPage: .none)
+       self = items.isEmpty ? .empty : .content(OrderedSet(items), nextCursor: cursor, nextPage: .none)
     }
     
     mutating func appendItems(_ items: [T], cursor: Cursor?) {
