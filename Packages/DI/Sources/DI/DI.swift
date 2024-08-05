@@ -1,20 +1,29 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+//
+//  File.swift
+//
+//
+//  Created by Sergey Kazakov on 04/08/2024.
+//
 
 import SwiftUI
 import PexelAPI
 import MainFeed
 
 public struct DI {
-    public let pexelAPIClient: PexelAPI.APIClient
-    public let pexelAPIService: MainFeed.PexelAPIService
+    public let pexelAPIClient: Client
+    public let photosAPIService: PhotosAPIService
     
-    public init(pexelAPIClient: APIClient,
-                pexelAPIService: MainFeed.PexelAPIService) {
+    public init(pexelAPIClient: Client,
+                photosAPIService: PhotosAPIService) {
         self.pexelAPIClient = pexelAPIClient
-        self.pexelAPIService = pexelAPIService
+        self.photosAPIService = photosAPIService
     }
-    
+}
+
+public extension View {
+    func environment(diContainer: DI) -> some View {
+        environment(diContainer.photosAPIService)
+    }
 }
  
 

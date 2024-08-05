@@ -26,8 +26,8 @@ let package = Package(
         .target(
             name: "DI", 
             dependencies: [
-                "PexelAPI",
-                "MainFeed"
+                .product(name: "PexelAPI", package: "PexelAPI"),
+                .product(name: "MainFeed", package: "MainFeed")
             ]
         ),
         .testTarget(
