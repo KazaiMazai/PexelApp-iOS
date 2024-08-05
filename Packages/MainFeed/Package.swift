@@ -18,6 +18,7 @@ let package = Package(
         .package(name: "DomainModel", path: "../DomainModel"),
         .package(name: "DesignSystem", path: "../DesignSystem"),
         .package(name: "SwiftUIExtensions", path: "../SwiftUIExtensions"),
+        .package(name: "PexelAPI", path: "../PexelAPI")
         
     ],
     targets: [
@@ -28,7 +29,8 @@ let package = Package(
             dependencies: [
                  "DomainModel",
                  "DesignSystem",
-                 "SwiftUIExtensions"
+                 "SwiftUIExtensions",
+                 "PexelAPI"
             ]
         ),
         .testTarget(

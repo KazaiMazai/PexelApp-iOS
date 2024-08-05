@@ -16,7 +16,7 @@ struct PexelApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainFeed()
+            MainFeedScreen()
                 .environment(diContainer: diContainer)
         }
     }
