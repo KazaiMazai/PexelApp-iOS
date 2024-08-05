@@ -9,10 +9,20 @@ import SwiftUI
 
 public extension ImageWithTitleCard {
     struct ViewModel {
-        enum Image {
+        
+        public enum Image {
             case url(URL)
             case placeholder(text: String)
             case image(UIImage)
+        }
+        
+        public init(image: ImageWithTitleCard.ViewModel.Image,
+                    title: String,
+                    selection: @escaping () -> Void) {
+            
+            self.image = image
+            self.title = title
+            self.selection = selection
         }
         
         let image: Image
@@ -22,7 +32,7 @@ public extension ImageWithTitleCard {
 }
  
 public struct ImageWithTitleCard: View {
-    let  viewModel: ViewModel
+    let viewModel: ViewModel
     
     public init(viewModel: ImageWithTitleCard.ViewModel) {
         self.viewModel = viewModel
@@ -41,18 +51,18 @@ public struct ImageWithTitleCard: View {
                 }
                 
                 Text(viewModel.title)
-                    
                     .foregroundStyle(.theme.title)
-                    .font(.theme.body)
-                    .padding(.horizontal, .theme.padddings.large)
-                    .padding(.vertical, .theme.padddings.medium)
+                    .font(.theme.title2)
+                    .lineLimit(0)
+                    .padding(.vertical, .theme.padddings.xLarge)
+                    .padding(.horizontal, .theme.padddings.medium)
                     .frame(maxWidth: .infinity, alignment: .center)
-                                    
             }
         }
+        .buttonStyle(PlainButtonStyle())
         .background(.theme.cardBackground)
         .cornerRadius(.theme.corners.large)
-        .shadow(.theme.dropShadow)
+        .shadow(.theme.largeDropShadow)
     }
     
     private func urlImageView(_ url: URL) -> some View {
@@ -60,8 +70,10 @@ public struct ImageWithTitleCard: View {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+            
         }, placeholder: {
             ProgressView()
+                .frame(height: 300)
         })
     }
     
@@ -76,7 +88,6 @@ public struct ImageWithTitleCard: View {
         Text(text)
             .foregroundStyle(.theme.placeholder)
             .font(.theme.title2)
-            .padding(.horizontal, .theme.padddings.large)
             .padding(.vertical, .theme.padddings.medium)
     }
 }
