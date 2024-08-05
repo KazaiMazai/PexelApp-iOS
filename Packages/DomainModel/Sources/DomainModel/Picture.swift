@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Picture: Identifiable {
+public struct Picture: Identifiable, Hashable {
     
     public let id: String
     public let photographer: String
@@ -43,6 +43,20 @@ public struct Picture: Identifiable {
         self.medium = medium
         self.small = small
         self.tiny = tiny
+    }
+    
+    public var largestAvailable: URL? {
+        [large2x, large, medium, small, tiny]
+            .compactMap { $0 }
+            .first
+        
+    }
+    
+    public var mediumAvailable: URL? {
+        [medium, small, tiny]
+            .compactMap { $0 }
+            .first
+        
     }
 }
 
