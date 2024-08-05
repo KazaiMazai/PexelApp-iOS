@@ -9,8 +9,10 @@ public struct DI {
     public let pexelAPIClient: PexelAPI.APIClient
     public let pexelAPIService: MainFeed.PexelAPIService
     
-    public init(pexelAPIClient: APIClient) {
+    public init(pexelAPIClient: APIClient,
+                pexelAPIService: MainFeed.PexelAPIService) {
         self.pexelAPIClient = pexelAPIClient
+        self.pexelAPIService = pexelAPIService
     }
     
 }

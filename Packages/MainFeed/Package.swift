@@ -15,7 +15,10 @@ let package = Package(
             targets: ["MainFeed"]),
     ],
     dependencies: [
-        .package(name: "DomainModel", path: "../DomainModel")
+        .package(name: "DomainModel", path: "../DomainModel"),
+        .package(name: "DesignSystem", path: "../DesignSystem"),
+        .package(name: "SwiftUIExtensions", path: "../SwiftUIExtensions"),
+        
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -23,7 +26,9 @@ let package = Package(
         .target(
             name: "MainFeed", 
             dependencies: [
-                 "DomainModel"
+                 "DomainModel",
+                 "DesignSystem",
+                 "SwiftUIExtensions"
             ]
         ),
         .testTarget(
