@@ -1,0 +1,40 @@
+//
+//  File.swift
+//  
+//
+//  Created by Sergey Kazakov on 05/08/2024.
+//
+
+import SwiftUI
+
+public struct Shadow {
+    let color: Color
+    let radius: CGFloat
+    let x: CGFloat
+    let y: CGFloat
+}
+
+public extension View {
+    func shadow(_ shadow: Shadow) -> some View {
+        self.shadow(
+            color: shadow.color,
+            radius: shadow.radius,
+            x: shadow.x,
+            y: shadow.y
+        )
+    }
+}
+
+public enum ThemeShadows { }
+
+public extension Shadow {
+    static var theme: ThemeShadows.Type {
+        ThemeShadows.self
+    }
+}
+
+public extension ThemeShadows {
+    static var dropShadow: Shadow {
+        Shadow.init(color: .theme.shadow,  radius: 30, x: 10, y: 10)
+    }
+}
