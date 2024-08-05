@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension PaginatedListView {
+extension PaginatedList {
     enum NextPageState {
         case none
         case loading
@@ -37,9 +37,9 @@ extension PaginatedListView {
                 state = .loading
                 let result = try await fetch(nil)
                 
-                state = result.items.isEmpty ? 
+                state = result.items.isEmpty ?
                     .empty
-                    : .display(result.items, nextCursor: result.cursor, nextPage: .none)
+                : .display(result.items, nextCursor: result.cursor, nextPage: .none)
             } catch {
                 state = .error(error: error)
             }
@@ -61,12 +61,12 @@ extension PaginatedListView {
     }
 }
 
-struct PaginatedListView<Data,
-                         Content: View,
-                         Footer: View,
-                         ErrorMessage: View,
-                         Empty: View,
-                         Placeholder: View>: View {
+struct PaginatedList<Data,
+                     Content: View,
+                     Footer: View,
+                     ErrorMessage: View,
+                     Empty: View,
+                     Placeholder: View>: View {
     
     let content: ([Data]) -> Content
     let footer: (NextPageState) -> Footer
@@ -90,7 +90,7 @@ struct PaginatedListView<Data,
             errorView(error)
         }
     }
-     
+    
     
     private func makeContent(_ items: [Data],
                              nextPage: NextPageState) -> some View {
