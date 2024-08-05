@@ -8,6 +8,41 @@
 import SwiftUI
 
 extension PaginatedList {
+    
+    enum State<T> {
+        case initial
+        case loading
+        case display([T], nextCursor: String?, nextPage: NextPageState)
+        case empty
+        case error(error: Error)
+        
+        mutating func setItems(items: [T], cursor: String?) {
+           self = items.isEmpty ? .empty
+            : .display(items, nextCursor: cursor, nextPage: .none)
+        }
+        
+        mutating func setError(_ error: Error) {
+            self = .error(error: error)
+        }
+        
+        mutating func setNextPageLoading() {
+            guard case let .display(items, nextCursor, nextPage) = self else {
+                return
+            }
+            
+            self = .display(items, nextCursor: nextCursor, nextPage: .loading)
+        }
+        
+        mutating func setNextPageLoadingError(_ error: Error) {
+            guard case let .display(items, nextCursor, nextPage) = self else {
+                return
+            }
+            
+            self = .display(items, nextCursor: nextCursor, nextPage: .error(error))
+        }
+        
+    }
+    
     enum NextPageState {
         case none
         case loading
@@ -90,7 +125,6 @@ struct PaginatedList<Data,
             errorView(error)
         }
     }
-    
     
     private func makeContent(_ items: [Data],
                              nextPage: NextPageState) -> some View {
