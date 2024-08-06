@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIExtensions
 
 public extension ImageWithText {
     struct ViewModel {
@@ -27,6 +28,7 @@ public extension ImageWithText {
     }
 }
  
+@MainActor
 public struct ImageWithText: View {
     private let viewModel: ViewModel
     
@@ -61,15 +63,23 @@ public struct ImageWithText: View {
 
 private extension ImageWithText {
     func urlImageView(_ url: URL) -> some View {
-        AsyncImage(url: url, content: { image in
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            
-        }, placeholder: {
-            ProgressView()
-                .frame(height: 300)
-        })
+        AsyncImageCached(url: url) { phase in
+            switch phase {
+            case .empty:
+                ProgressView()
+                    .frame(height: 300)
+            case .success(let image):
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            case .failure:
+                Text("\(Image(systemName: "xmark.circle.fill")) Couldn't load the image")
+                    .frame(height: 300)
+            @unknown default:
+                ProgressView()
+                    .frame(height: 300)
+            }
+        }
     }
     
     func imageView(_ image: UIImage) -> some View {
