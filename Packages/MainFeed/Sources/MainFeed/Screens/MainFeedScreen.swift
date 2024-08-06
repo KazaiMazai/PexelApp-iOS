@@ -40,6 +40,7 @@ struct MainFeedListView: View {
             empty: empty,
             fetch: fetch
         )
+        .setRefreshable(true)
         .modal($selectedPicture) { picture, opacity in
             ImageWithText(
                 viewModel: ImageWithText.ViewModel(picture: picture)
