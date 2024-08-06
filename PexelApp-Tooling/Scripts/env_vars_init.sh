@@ -9,7 +9,7 @@ if [ $ACTION = "indexbuild" ]; then exit 0; fi
 
 echo "EnvironmentVars init"
 
-CONFIGURATION_PATH="${SRCROOT}/PexelApp-iOS/PexelApp-iOS/Configuration/EnvironmentVars"
+CONFIGURATION_PATH="${SRCROOT}/PexelApp-iOS/Configuration/EnvironmentVars"
 TEMPLATE_PATH="${CONFIGURATION_PATH}/EnvironmentVars.stencil"
 
 # Path to the env.xcconfig file

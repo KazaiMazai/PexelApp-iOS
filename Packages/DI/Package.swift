@@ -4,23 +4,34 @@
 import PackageDescription
 
 let package = Package(
-    name: "DesignSystem",
+    name: "DI",
     platforms: [
         .iOS(.v17)
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "DesignSystem",
-            targets: ["DesignSystem"]),
+            name: "DI",
+            targets: ["DI"]),
+        
+    ],
+    dependencies: [
+        .package(name: "PexelAPI", path: "../PexelAPI"),
+        .package(name: "MainFeed", path: "../MainFeed")
+        
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "DesignSystem"),
+            name: "DI", 
+            dependencies: [
+                .product(name: "PexelAPI", package: "PexelAPI"),
+                .product(name: "MainFeed", package: "MainFeed")
+            ]
+        ),
         .testTarget(
-            name: "DesignSystemTests",
-            dependencies: ["DesignSystem"]),
+            name: "DITests",
+            dependencies: ["DI"]),
     ]
 )
