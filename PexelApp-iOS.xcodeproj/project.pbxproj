@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA8505B12C60337E00BD1239 /* EnvironmentVars.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8505B02C60337A00BD1239 /* EnvironmentVars.generated.swift */; };
+		EA8505B82C6148ED00BD1239 /* DI in Frameworks */ = {isa = PBXBuildFile; productRef = EA8505B72C6148ED00BD1239 /* DI */; };
 		EAD322572C5FFA9800D6B3A5 /* PexelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322562C5FFA9800D6B3A5 /* PexelApp.swift */; };
-		EAD322592C5FFA9800D6B3A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322582C5FFA9800D6B3A5 /* ContentView.swift */; };
 		EAD3225B2C5FFA9900D6B3A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */; };
 		EAD3225E2C5FFA9900D6B3A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD3225D2C5FFA9900D6B3A5 /* Preview Assets.xcassets */; };
 		EAD322682C5FFA9900D6B3A5 /* PexelApp_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD322672C5FFA9900D6B3A5 /* PexelApp_iOSTests.swift */; };
@@ -35,9 +36,12 @@
 
 /* Begin PBXFileReference section */
 		EA8505AE2C602FC600BD1239 /* MainFeed */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MainFeed; sourceTree = "<group>"; };
+		EA8505AF2C60337A00BD1239 /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
+		EA8505B02C60337A00BD1239 /* EnvironmentVars.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVars.generated.swift; sourceTree = "<group>"; };
+		EA8505B52C60365700BD1239 /* DI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DI; sourceTree = "<group>"; };
+		EA8505B62C60416600BD1239 /* DomainModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DomainModel; sourceTree = "<group>"; };
 		EAD322532C5FFA9800D6B3A5 /* PexelApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PexelApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD322562C5FFA9800D6B3A5 /* PexelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp.swift; sourceTree = "<group>"; };
-		EAD322582C5FFA9800D6B3A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EAD3225A2C5FFA9900D6B3A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAD3225D2C5FFA9900D6B3A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EAD322632C5FFA9900D6B3A5 /* PexelApp-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PexelApp-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA8505B82C6148ED00BD1239 /* DI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,15 +100,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		EA8505B22C6033AB00BD1239 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EAD3224A2C5FFA9800D6B3A5 = {
 			isa = PBXGroup;
 			children = (
 				EAD322812C5FFBD300D6B3A5 /* Packages */,
-				EAD3228D2C600BDF00D6B3A5 /* PexelApp-Tooling */,
 				EAD322552C5FFA9800D6B3A5 /* PexelApp-iOS */,
 				EAD322662C5FFA9900D6B3A5 /* PexelApp-iOSTests */,
 				EAD322702C5FFA9900D6B3A5 /* PexelApp-iOSUITests */,
+				EAD3228D2C600BDF00D6B3A5 /* PexelApp-Tooling */,
 				EAD322542C5FFA9800D6B3A5 /* Products */,
+				EA8505B22C6033AB00BD1239 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,7 +135,6 @@
 			children = (
 				EAD322832C5FFC4700D6B3A5 /* Application */,
 				EAD322852C5FFC7200D6B3A5 /* Configuration */,
-				EAD322582C5FFA9800D6B3A5 /* ContentView.swift */,
 				EA8505AD2C602D6800BD1239 /* Resources */,
 			);
 			path = "PexelApp-iOS";
@@ -156,6 +168,8 @@
 		EAD322812C5FFBD300D6B3A5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				EA8505B62C60416600BD1239 /* DomainModel */,
+				EA8505B52C60365700BD1239 /* DI */,
 				EA8505AE2C602FC600BD1239 /* MainFeed */,
 				EAD3228C2C600B4400D6B3A5 /* ResourcesCatalog */,
 				EAD3228B2C60051600D6B3A5 /* DesignSystem */,
@@ -224,6 +238,8 @@
 			isa = PBXGroup;
 			children = (
 				EAD3229E2C600E9700D6B3A5 /* env-example.xcconfig */,
+				EA8505AF2C60337A00BD1239 /* env.xcconfig */,
+				EA8505B02C60337A00BD1239 /* EnvironmentVars.generated.swift */,
 				EAD3229C2C600E9700D6B3A5 /* EnvironmentVars.stencil */,
 			);
 			path = EnvironmentVars;
@@ -248,6 +264,9 @@
 			dependencies = (
 			);
 			name = "PexelApp-iOS";
+			packageProductDependencies = (
+				EA8505B72C6148ED00BD1239 /* DI */,
+			);
 			productName = "PexelApp-iOS";
 			productReference = EAD322532C5FFA9800D6B3A5 /* PexelApp-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -424,8 +443,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD322592C5FFA9800D6B3A5 /* ContentView.swift in Sources */,
 				EAD322572C5FFA9800D6B3A5 /* PexelApp.swift in Sources */,
+				EA8505B12C60337E00BD1239 /* EnvironmentVars.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +776,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EA8505B72C6148ED00BD1239 /* DI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EAD3224B2C5FFA9800D6B3A5 /* Project object */;
 }
