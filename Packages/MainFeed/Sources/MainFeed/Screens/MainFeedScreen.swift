@@ -22,6 +22,9 @@ public struct MainFeedScreen: View {
 }
 
 struct MainFeedListView: View {
+    @Namespace var detailViewNamespace
+    @State var selectedPicture: Picture?
+    
     let fetch: (_ page: Int?) async throws -> ([Picture], Int?)
     
     init(fetch: @escaping (_ page: Int?) async throws -> ([Picture], Int?)) {
@@ -37,18 +40,33 @@ struct MainFeedListView: View {
             empty: empty,
             fetch: fetch
         )
+        .modal($selectedPicture) { picture, opacity in
+            ImageWithText(
+                viewModel: ImageWithText.ViewModel(picture: picture)
+            )
+            .cornerRadius((1.0 - opacity) * .theme.corners.large)
+            .shadow(.theme.largeDropShadow)
+            .matchedGeometryEffect(id: picture, in: detailViewNamespace, isSource: selectedPicture != nil)
+        }
     }
 }
 
 private extension MainFeedListView {
     func content(_ pictures: [Picture]) -> some View {
         ForEach(pictures.indices, id: \.self) { index in
-            ImageWithTitleCard(
-                viewModel: ImageWithTitleCard.ViewModel(
-                    picture: pictures[index], 
-                    selection: {}
+            Button(action: {
+                select(pictures[index])
+            }, label: {
+                ImageWithTextCard(
+                    viewModel: ImageWithText.ViewModel(
+                        picture: pictures[index]
+                    )
                 )
-            )
+                
+                .zIndex(Double(pictures.count - index))
+                .matchedGeometryEffect(id: pictures[index], in: detailViewNamespace, isSource: selectedPicture == nil)
+            })
+            .buttonStyle(ScaleButtonStyle())
             .listRowInsets(
                 EdgeInsets(
                     top: .zero,
@@ -58,8 +76,25 @@ private extension MainFeedListView {
                 )
             )
             .listRowSeparator(.hidden)
-            .zIndex(Double(pictures.count - index))
         }
+    }
+    
+    func select(_ picture: Picture) {
+        withAnimation(.interactiveSpring(
+            response: 0.6,
+            dampingFraction: 0.7,
+            blendDuration: 0.7)) {
+                
+                selectedPicture = picture
+            }
+    }
+    
+    func pictureCardView(_ picture: Picture) -> some View {
+        ImageWithTextCard(
+            viewModel: ImageWithText.ViewModel(
+                picture: picture
+            )
+        )
     }
     
     @ViewBuilder
@@ -93,14 +128,12 @@ private extension MainFeedListView {
     }
 }
 
-extension ImageWithTitleCard.ViewModel {
-    init(picture: Picture, selection: @escaping () -> Void) {
+extension ImageWithText.ViewModel {
+    init(picture: Picture) {
         self.init(
             image: picture.mediumAvailable
                 .map { .url($0) } ?? .placeholder(text: "No image"),
-            title: picture.photographer,
-            selection: selection
+            title: picture.photographer
         )
     }
 }
-
