@@ -18,6 +18,7 @@ public struct PaginatedList<Data: Hashable,
     
     private let content: ([Data]) -> Content
     private let footer: (NextPageState) -> Footer
+    private var refreshable: Bool = false
     
     private(set) var errorView: (Error) -> ErrorMessage
     private(set) var placeholder: () -> Placeholder
@@ -61,6 +62,14 @@ public struct PaginatedList<Data: Hashable,
     }
 }
 
+public extension PaginatedList {
+    func setRefreshable(_ isRefreshable: Bool) -> Self {
+        var copy = self
+        copy.refreshable = isRefreshable
+        return copy
+    }
+}
+
 private extension PaginatedList {
     
     func makeContent(_ items: [Data],
@@ -89,8 +98,21 @@ private extension PaginatedList {
                 }
             }
         }
+        .refreshable(refreshable, perform: { await initialFetch() })
         .scrollDismissesKeyboard(.immediately)
         .listStyle(.plain)
+        
+    }
+}
+
+private extension List {
+    @ViewBuilder
+    func refreshable(_ isRefreshable: Bool, perform action: @escaping @Sendable () async -> Void) -> some View {
+        if isRefreshable {
+            self.refreshable(action: action)
+        } else {
+            self
+        }
     }
 }
 
