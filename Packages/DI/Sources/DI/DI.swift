@@ -12,17 +12,22 @@ import MainFeed
 public struct DI {
     public let pexelAPIClient: Client
     public let photosAPIService: PhotosAPIService
+    public let asyncImageURLSession: URLSession
     
     public init(pexelAPIClient: Client,
-                photosAPIService: PhotosAPIService) {
+                photosAPIService: PhotosAPIService,
+                asyncImageURLSession: URLSession) {
+        
         self.pexelAPIClient = pexelAPIClient
         self.photosAPIService = photosAPIService
+        self.asyncImageURLSession = asyncImageURLSession
     }
 }
 
 public extension View {
     func environment(diContainer: DI) -> some View {
-        environment(diContainer.photosAPIService)
+        self.environment(diContainer.photosAPIService)
+            .asyncImageURLSession(diContainer.asyncImageURLSession)
     }
 }
  

@@ -14,11 +14,16 @@ let package = Package(
             name: "DesignSystem",
             targets: ["DesignSystem"]),
     ],
+    dependencies: [
+        .package(name: "SwiftUIExtensions", path: "../SwiftUIExtensions")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "DesignSystem"),
+            name: "DesignSystem", dependencies: [
+                .product(name: "SwiftUIExtensions", package: "SwiftUIExtensions")
+            ]),
         .testTarget(
             name: "DesignSystemTests",
             dependencies: ["DesignSystem"]),
