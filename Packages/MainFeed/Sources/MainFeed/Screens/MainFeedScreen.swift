@@ -63,8 +63,6 @@ private extension MainFeedListView {
                         picture: pictures[index]
                     )
                 )
-                
-                .zIndex(Double(pictures.count - index))
                 .matchedGeometryEffect(id: pictures[index], in: detailViewNamespace, isSource: selectedPicture == nil)
             })
             .buttonStyle(ScaleButtonStyle())
