@@ -17,7 +17,8 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "PexelAPI", path: "../PexelAPI"),
-        .package(name: "MainFeed", path: "../MainFeed")
+        .package(name: "MainFeed", path: "../MainFeed"),
+        .package(name: "SwiftUIExtensions", path: "../SwiftUIExtensions")
         
     ],
     targets: [
@@ -27,7 +28,8 @@ let package = Package(
             name: "DI", 
             dependencies: [
                 .product(name: "PexelAPI", package: "PexelAPI"),
-                .product(name: "MainFeed", package: "MainFeed")
+                .product(name: "MainFeed", package: "MainFeed"),
+                .product(name: "SwiftUIExtensions", package: "SwiftUIExtensions")
             ]
         ),
         .testTarget(
