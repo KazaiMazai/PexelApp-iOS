@@ -50,7 +50,6 @@
 		EAD322712C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp_iOSUITests.swift; sourceTree = "<group>"; };
 		EAD322732C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EAD322862C5FFD9200D6B3A5 /* PexelAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PexelAPI; sourceTree = "<group>"; };
-		EAD322872C6000D000D6B3A5 /* UIKitExtensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UIKitExtensions; sourceTree = "<group>"; };
 		EAD322882C60010600D6B3A5 /* SwiftUIExtensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SwiftUIExtensions; sourceTree = "<group>"; };
 		EAD3228B2C60051600D6B3A5 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DesignSystem; sourceTree = "<group>"; };
 		EAD3228C2C600B4400D6B3A5 /* ResourcesCatalog */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ResourcesCatalog; sourceTree = "<group>"; };
@@ -174,7 +173,6 @@
 				EAD3228C2C600B4400D6B3A5 /* ResourcesCatalog */,
 				EAD3228B2C60051600D6B3A5 /* DesignSystem */,
 				EAD322882C60010600D6B3A5 /* SwiftUIExtensions */,
-				EAD322872C6000D000D6B3A5 /* UIKitExtensions */,
 				EAD322862C5FFD9200D6B3A5 /* PexelAPI */,
 			);
 			path = Packages;
