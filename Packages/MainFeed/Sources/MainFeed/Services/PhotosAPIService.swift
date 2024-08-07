@@ -11,10 +11,10 @@ import PexelAPI
 public final class PhotosAPIService {
     private let client: PexelAPI.Client
     private let urlSession: URLSession
-    
+
     public init(client: PexelAPI.Client,
                 urlSession: URLSession) {
-        
+
         self.client = client
         self.urlSession = urlSession
     }

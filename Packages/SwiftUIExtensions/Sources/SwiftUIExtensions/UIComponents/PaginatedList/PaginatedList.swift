@@ -120,7 +120,7 @@ private extension PaginatedList {
             state.setError(error)
         }
     }
-    
+
     func initialFetch() async {
         state = .loading
         do {

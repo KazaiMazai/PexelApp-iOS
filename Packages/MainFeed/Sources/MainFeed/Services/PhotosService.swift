@@ -13,18 +13,18 @@ import PexelAPI
 public final class PhotosService {
     private var storage: PhotosStorageService
     private var apiService: PhotosAPIService
-    
+
     public init(storage: PhotosStorageService,
                 apiService: PhotosAPIService) {
-        
+
         self.storage = storage
         self.apiService = apiService
     }
-     
+
     func find(_ id: Picture.ID) -> Picture? {
         storage.find(id)
     }
-     
+
     func fetch(page: Int?) async throws -> ([Picture.ID], Int?) {
         let result = try await apiService.fetch(page: page ?? 0)
         storage.save(result.items)
