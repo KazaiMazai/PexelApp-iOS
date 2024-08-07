@@ -52,7 +52,7 @@ extension DI {
     
     static let prod: DI = {
         DI(pexelAPIClient: client,
-           photosAPIService: PhotosAPIService(
+           photosAPIService: PhotosService(
             client: client,
             urlSession: urlSession
            ),
