@@ -8,6 +8,7 @@
 import Foundation
 import PexelAPI
 
+@MainActor
 @Observable
 public final class PhotosService {
     private var storage: PhotosStorageService
@@ -19,13 +20,11 @@ public final class PhotosService {
         self.storage = storage
         self.apiService = apiService
     }
-    
-    @MainActor
+     
     func find(_ id: Picture.ID) -> Picture? {
         storage.find(id)
     }
-    
-    @MainActor
+     
     func fetch(page: Int?) async throws -> ([Picture.ID], Int?) {
         let result = try await apiService.fetch(page: page ?? 0)
         storage.save(result.items)

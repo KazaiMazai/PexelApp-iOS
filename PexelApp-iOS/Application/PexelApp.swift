@@ -20,6 +20,7 @@ struct PexelApp: App {
     }
 }
 
+@MainActor
 extension DI {
     static let asyncImageURLSession: URLSession = {
         let config = URLSessionConfiguration.default
@@ -50,9 +51,11 @@ extension DI {
 
     static let prod: DI = {
         DI(pexelAPIClient: client,
-           photosAPIService: PhotosService(
-            client: client,
-            urlSession: urlSession
+           photosService: PhotosService(
+                storage: PhotosStorageService(),
+                apiService: PhotosAPIService(
+                    client: client,
+                    urlSession: urlSession)
            ),
            asyncImageURLSession: asyncImageURLSession
         )
