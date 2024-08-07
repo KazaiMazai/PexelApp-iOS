@@ -9,9 +9,14 @@ import Foundation
 import Collections
 
 public enum NextPageState {
-    case none
+    case done
+    case hasMore
     case loading
     case error(Error)
+    
+    init<Cursor>(cursor: Cursor?) {
+        self = cursor == nil ? .done : .hasMore
+    }
 }
 
 enum PaginatedListState<T: Hashable, Cursor> {
@@ -29,10 +34,6 @@ extension PaginatedListState {
         }
         
         return nextCursor
-    }
-    
-    var hasMore: Bool {
-        nextCursor != nil
     }
     
     var needsInitFetch: Bool {
@@ -62,7 +63,8 @@ extension PaginatedListState {
 
 extension PaginatedListState {
     mutating func setItems(_ items: [T], cursor: Cursor?) {
-       self = items.isEmpty ? .empty : .content(OrderedSet(items), nextCursor: cursor, nextPage: .none)
+        let nextPage = NextPageState(cursor: cursor)
+        self = items.isEmpty ? .empty : .content(OrderedSet(items), nextCursor: cursor, nextPage: nextPage)
     }
     
     mutating func appendItems(_ items: [T], cursor: Cursor?) {
@@ -72,7 +74,8 @@ extension PaginatedListState {
         }
         
         currentItems.append(contentsOf: items)
-        self = .content(currentItems, nextCursor: cursor, nextPage: .none)
+        let nextPage = NextPageState(cursor: cursor)
+        self = .content(currentItems, nextCursor: cursor, nextPage: nextPage)
     }
     
     mutating func setError(_ error: Error) {

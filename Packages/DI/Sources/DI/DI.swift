@@ -11,11 +11,11 @@ import MainFeed
 
 public struct DI {
     public let pexelAPIClient: Client
-    public let photosAPIService: PhotosAPIService
+    public let photosAPIService: PhotosService
     public let asyncImageURLSession: URLSession
     
     public init(pexelAPIClient: Client,
-                photosAPIService: PhotosAPIService,
+                photosAPIService: PhotosService,
                 asyncImageURLSession: URLSession) {
         
         self.pexelAPIClient = pexelAPIClient

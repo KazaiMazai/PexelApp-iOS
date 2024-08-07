@@ -9,19 +9,23 @@ import SwiftUI
 
 
 public extension View {
-    func modal<Destination: View, Bindable: Identifiable>(
+    func modal<Destination: View, Bindable: Hashable>(
         _ bindable: Binding<Bindable?>,
-        @ViewBuilder destination: @escaping (_ value: Bindable, _ opacity: CGFloat) -> Destination) -> some View {
+        animation: Animation,
+        @ViewBuilder destination: @escaping (_ value: Bindable,
+                                             _ interactivePresentationProgress: CGFloat) -> Destination) -> some View {
         
-        modifier(ModalViewModifier(value: bindable, destination: destination))
+        modifier(ModalViewModifier(value: bindable, animation: animation, destination: destination))
     }
 }
 
-struct ModalViewModifier<Destination: View, Bindable: Identifiable>: ViewModifier {
-    @State private var offset = CGSize.zero
-    @Binding var value: Bindable?
+struct ModalViewModifier<Destination: View, Bindable: Hashable>: ViewModifier {
+    private let offsetLimit: CGFloat = 50
     
-    let destination: (_ value: Bindable, _ opacity: CGFloat) -> Destination
+    @State private var offset = CGSize.zero
+    @Binding private(set) var value: Bindable?
+    private(set) var animation: Animation
+    let destination: (_ value: Bindable, _ presentationProgress: CGFloat) -> Destination
     
     func body(content: Content) -> some View {
         ZStack(alignment: .top) {
@@ -31,10 +35,10 @@ struct ModalViewModifier<Destination: View, Bindable: Identifiable>: ViewModifie
             if let value {
                 Color.white
                     .ignoresSafeArea()
-                    .opacity(overlayOpacity)
-                    .animation(.easeInOut, value: overlayOpacity)
+                    .opacity(interactivePresentationProgress)
+                    .animation(.easeInOut, value: interactivePresentationProgress)
                 
-                destination(value, overlayOpacity)
+                destination(value, interactivePresentationProgress)
                     .offset(offset)
                     .ignoresSafeArea()
                     .gesture(
@@ -43,37 +47,34 @@ struct ModalViewModifier<Destination: View, Bindable: Identifiable>: ViewModifie
                                 offset = gesture.translation
                             }
                             .onEnded { _ in
-                                guard offsetLimit.isLess(than: currentMaxOffset) else {
-                                    withAnimation(.interactiveSpring(
-                                        response: 0.6,
-                                        dampingFraction: 0.7,
-                                        blendDuration: 0.7)) {
-                                            offset = .zero
-                                        }
-                                    offset = .zero
-                                    return
-                                }
-                                
-                                withAnimation(.interactiveSpring(
-                                    response: 0.6,
-                                    dampingFraction: 0.7,
-                                    blendDuration: 0.7)) {
-                                        offset = .zero
-                                        self.value = nil
-                                    }
+                                hideOfNeeded()
                             }
                     )
             }
         }
     }
     
-    private var currentMaxOffset: CGFloat {
-        max(abs(offset.width), abs(offset.height))
+    private func hideOfNeeded() {
+        guard offsetLimit.isLess(than: absoluteOffset) else {
+            withAnimation(animation) {
+                offset = .zero
+            }
+            
+            offset = .zero
+            return
+        }
+        
+        withAnimation(animation) {
+            offset = .zero
+            self.value = nil
+        }
     }
     
-    private let offsetLimit: CGFloat = 50
+    private var absoluteOffset: CGFloat {
+        abs(offset.width) + abs(offset.height)
+    }
     
-    private var overlayOpacity: CGFloat {
-        min(1.0, max(0.0, 1.0 - (currentMaxOffset / offsetLimit)))
+    private var interactivePresentationProgress: CGFloat {
+        min(1.0, max(0.0, 1.0 - (absoluteOffset / offsetLimit)))
     }
 }

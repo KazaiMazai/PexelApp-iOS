@@ -10,20 +10,22 @@ import SwiftUI
 @MainActor
 public struct PaginatedList<Data: Hashable,
                             Cursor,
-                            Content: View,
+                            Content: View, 
                             Footer: View,
-                            ErrorMessage: View,
+                            Failure: View,
                             Empty: View,
                             Placeholder: View>: View {
+    
+    public typealias Refresh = () async -> Void
     
     private let content: ([Data]) -> Content
     private let footer: (NextPageState) -> Footer
     private var refreshable: Bool = false
     
-    private(set) var errorView: (Error) -> ErrorMessage
+    private(set) var failure: (Error, _ refresh: @escaping Refresh) -> Failure
     private(set) var placeholder: () -> Placeholder
-    private(set) var empty: () -> Empty
-    
+    private(set) var empty: (_ refresh: @escaping Refresh) -> Empty
+     
     private(set) var fetch: (Cursor?) async throws -> (items: [Data], cursor: Cursor?)
    
     @State private var state: PaginatedListState<Data, Cursor> = .initial
@@ -33,29 +35,36 @@ public struct PaginatedList<Data: Hashable,
         case .loading:
             placeholder()
         case .empty:
-            empty()
+            empty(initialFetch)
         case .initial:
             placeholder().onAppear {
-                state = .loading
                 Task { await initialFetch() }
             }
         case .content(let items, _, let nextPage):
-            makeContent(items.elements, nextPage: nextPage)
+            List {
+                content(items.elements)
+                paginatingFooter(nextPage) {
+                    Task { await fetchNextPage() }
+                }
+            }
+            .refreshable(refreshable, perform: { await initialFetch() })
+            .scrollDismissesKeyboard(.immediately)
+            .listStyle(.plain)
         case .error(error: let error):
-            errorView(error)
+            failure(error, initialFetch)
         }
     }
-    
+
     public init(content: @escaping ([Data]) -> Content,
                 footer: @escaping (NextPageState) -> Footer,
-                errorView: @escaping (any Error) -> ErrorMessage,
+                errorView: @escaping (any Error, _ refresh: @escaping Refresh) -> Failure,
                 placeholder: @escaping () -> Placeholder,
-                empty: @escaping () -> Empty,
+                empty: @escaping (_ refresh: @escaping Refresh) -> Empty,
                 fetch: @escaping (Cursor?) async throws -> (items: [Data], cursor: Cursor?)) {
         
         self.content = content
         self.footer = footer
-        self.errorView = errorView
+        self.failure = errorView
         self.placeholder = placeholder
         self.empty = empty
         self.fetch = fetch
@@ -71,37 +80,23 @@ public extension PaginatedList {
 }
 
 private extension PaginatedList {
-    
-    func makeContent(_ items: [Data],
-                     nextPage: NextPageState) -> some View {
-      
-        List {
-            content(items)
-            
-            switch nextPage {
-            case .loading:
-                footer(nextPage)
-            case .error:
-                Button(
-                    action: {
-                        state.setNextPageLoading()
-                        Task { await fetchNextPage() }
-                    },
-                    label: {
-                        footer(nextPage)
-                    }
-                )
-            case .none:
-                footer(nextPage).onAppear {
-                    state.setNextPageLoading()
-                    Task { await fetchNextPage() }
-                }
-            }
-        }
-        .refreshable(refreshable, perform: { await initialFetch() })
-        .scrollDismissesKeyboard(.immediately)
-        .listStyle(.plain)
+    @ViewBuilder
+    func paginatingFooter(_ nextPageState: NextPageState, 
+                          loadMore: @escaping () -> Void) -> some View {
         
+        switch nextPageState {
+        case .done:
+            EmptyView()
+        case .loading:
+            footer(nextPageState)
+        case .error:
+            Button(action: loadMore) {
+                footer(nextPageState)
+            }
+        case .hasMore:
+            footer(nextPageState)
+                .onAppear(perform: loadMore)
+        }
     }
 }
 
@@ -109,7 +104,7 @@ private extension List {
     @ViewBuilder
     func refreshable(_ isRefreshable: Bool, perform action: @escaping @Sendable () async -> Void) -> some View {
         if isRefreshable {
-            self.refreshable(action: action)
+            refreshable(action: action)
         } else {
             self
         }
@@ -117,8 +112,8 @@ private extension List {
 }
 
 private extension PaginatedList {
-    
     func initialFetch() async {
+        state = .loading
         do {
             let result = try await fetch(nil)
             state.setItems(result.items, cursor: result.cursor)
@@ -128,12 +123,12 @@ private extension PaginatedList {
     }
     
     func fetchNextPage() async {
+        state.setNextPageLoading()
         do {
             guard let nextCursor = state.nextCursor else {
                 state.appendItems([], cursor: nil)
                 return
             }
-            
             let result = try await fetch(nextCursor)
             state.appendItems(result.items, cursor: result.cursor)
         } catch {
@@ -141,5 +136,3 @@ private extension PaginatedList {
         }
     }
 }
-
-

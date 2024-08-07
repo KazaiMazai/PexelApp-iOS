@@ -43,6 +43,10 @@ public extension ThemeColors {
     static var shadow: Color {
         .black.opacity(0.1)
     }
+    
+    static var failedImageBackground: Color {
+        .gray
+    }
 }
  
 public enum ThemeShapeStyleColors { }

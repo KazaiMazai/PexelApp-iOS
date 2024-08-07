@@ -9,7 +9,9 @@ import Foundation
 import PexelAPI
 
 @Observable
-public final class PhotosAPIService {
+public final class PhotosService {
+    private var storage: [Picture.ID: Picture] = [:]
+    
     private let client: PexelAPI.Client
     private let urlSession: URLSession
     
@@ -20,10 +22,13 @@ public final class PhotosAPIService {
         self.urlSession = urlSession
     }
     
-    func fetch(page: Int?) async throws -> ([Picture], Int) {
+    func find(_ id: Picture.ID) -> Picture? {
+        storage[id]
+    }
+    
+    func fetch(page: Int?) async throws -> ([Picture.ID], Int?) {
         let page = page ?? 0
         let limit = 10
-        
         let request = try client.curatedPhotos(
             page: .init(page: page, perPage: limit)
         )
@@ -31,7 +36,9 @@ public final class PhotosAPIService {
         case .data(let handler):
             let (data, response) = try await urlSession.data(for: request.urlRequest)
             let result = try handler(data, response)
-            return (result.photos.map { $0.appModel() }, page + 1)
+            let items = result.photos.map { $0.appModel() }
+            items.forEach { storage[$0.id] = $0 }
+            return (items.map { $0.id }, page + 1)
         }
     }
 }
