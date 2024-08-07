@@ -30,6 +30,21 @@ public struct PaginatedList<Data: Hashable,
 
     @State private var state: PaginatedListState<Data, Cursor> = .initial
 
+    public init(content: @escaping ([Data]) -> Content,
+                footer: @escaping (NextPageState) -> Footer,
+                errorView: @escaping (any Error, _ refresh: @escaping Refresh) -> Failure,
+                placeholder: @escaping () -> Placeholder,
+                empty: @escaping (_ refresh: @escaping Refresh) -> Empty,
+                fetch: @escaping (Cursor?) async throws -> (items: [Data], cursor: Cursor?)) {
+
+        self.content = content
+        self.footer = footer
+        self.failure = errorView
+        self.placeholder = placeholder
+        self.empty = empty
+        self.fetch = fetch
+    }
+    
     public var body: some View {
         switch state {
         case .loading:
@@ -48,26 +63,10 @@ public struct PaginatedList<Data: Hashable,
                 }
             }
             .refreshable(refreshable, perform: { await refreshFetch() })
-            .scrollDismissesKeyboard(.immediately)
             .listStyle(.plain)
         case .error(error: let error):
             failure(error, initialFetch)
         }
-    }
-
-    public init(content: @escaping ([Data]) -> Content,
-                footer: @escaping (NextPageState) -> Footer,
-                errorView: @escaping (any Error, _ refresh: @escaping Refresh) -> Failure,
-                placeholder: @escaping () -> Placeholder,
-                empty: @escaping (_ refresh: @escaping Refresh) -> Empty,
-                fetch: @escaping (Cursor?) async throws -> (items: [Data], cursor: Cursor?)) {
-
-        self.content = content
-        self.footer = footer
-        self.failure = errorView
-        self.placeholder = placeholder
-        self.empty = empty
-        self.fetch = fetch
     }
 }
 
@@ -96,17 +95,6 @@ private extension PaginatedList {
         case .hasMore:
             footer(nextPageState)
                 .onAppear(perform: loadMore)
-        }
-    }
-}
-
-private extension List {
-    @ViewBuilder
-    func refreshable(_ isRefreshable: Bool, perform action: @escaping @Sendable () async -> Void) -> some View {
-        if isRefreshable {
-            refreshable(action: action)
-        } else {
-            self
         }
     }
 }
