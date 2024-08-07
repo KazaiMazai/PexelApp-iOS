@@ -11,10 +11,10 @@ import SwiftUI
 public struct AsyncImageCached<Content: View>: View {
     @Environment(\.asyncImageURLSession) var urlSession
     
-    private let url: URL
+    @State private var fetchResult: (url: URL, image: Result<(UIImage), Error>)?
+    @ViewBuilder private let content: (AsyncImagePhase) -> Content
     
-    @State private var result: Result<UIImage, Error>?
-    @ViewBuilder let content: (AsyncImagePhase) -> Content
+    private let url: URL
     
     public init(url: URL, @ViewBuilder content: @escaping (AsyncImagePhase) -> Content) {
         self.url = url
@@ -22,8 +22,8 @@ public struct AsyncImageCached<Content: View>: View {
     }
     
     public var body: some View {
-        if let result {
-            contentFor(result)
+        if let fetchResult, fetchResult.url == url {
+            contentFor(fetchResult.image)
         } else {
             placeholder()
         }
@@ -37,26 +37,9 @@ public extension AsyncImageCached {
     }
 }
 
-public extension EnvironmentValues {
-    var asyncImageURLSession: URLSession {
-        get { self[AsyncImageURLSession.self] }
-        set { self[AsyncImageURLSession.self] = newValue }
-    }
-}
-
-public extension View {
-    func asyncImageURLSession(_ urlSession: URLSession) -> some View {
-        environment(\.asyncImageURLSession, urlSession)
-    }
-}
-
-private struct AsyncImageURLSession: EnvironmentKey {
-    static let defaultValue = URLSession.shared
-}
-
 private extension AsyncImageCached {
     func placeholder() -> some View {
-        content(.empty).task(id: url) {
+        content(.empty).task {
             await downloadImage()
         }
     }
@@ -75,19 +58,19 @@ private extension AsyncImageCached {
             let cache = urlSession.configuration.urlCache
             if let cache, let cachedResponse = cache.cachedResponse(for: URLRequest(url: url)),
                let image = UIImage(data: cachedResponse.data) {
-                self.result = .success(image)
+                self.fetchResult = (url, .success(image))
                 return
             }
             
             let (data, _) = try await urlSession.data(from: url)
             guard let image = UIImage(data: data) else {
-                self.result = .failure(Errors.imageDataIsMalformed)
+                self.fetchResult = (url, .failure(Errors.imageDataIsMalformed))
                 return
             }
             
-            self.result = .success(image)
+            self.fetchResult = (url, .success(image))
         } catch {
-            self.result = .failure(Errors.couldNotRetrieveImage)
+            self.fetchResult = (url, .failure(Errors.couldNotRetrieveImage))
         }
     }
 }
