@@ -43,7 +43,6 @@ public struct PaginatedList<Data: Hashable,
         case .content(let items, _, let nextPage):
             List {
                 content(items.elements)
-                
                 paginatingFooter(nextPage) {
                     Task { await fetchNextPage() }
                 }
@@ -82,21 +81,21 @@ public extension PaginatedList {
 
 private extension PaginatedList {
     @ViewBuilder
-    func paginatingFooter(_ nextPage: NextPageState, 
-                          paginate: @escaping () -> Void) -> some View {
+    func paginatingFooter(_ nextPageState: NextPageState, 
+                          loadMore: @escaping () -> Void) -> some View {
         
-        switch nextPage {
+        switch nextPageState {
         case .done:
             EmptyView()
         case .loading:
-            footer(nextPage)
+            footer(nextPageState)
         case .error:
-            Button(action: paginate) {
-                footer(nextPage)
+            Button(action: loadMore) {
+                footer(nextPageState)
             }
         case .hasMore:
-            footer(nextPage)
-                .onAppear(perform: paginate)
+            footer(nextPageState)
+                .onAppear(perform: loadMore)
         }
     }
 }
@@ -105,7 +104,7 @@ private extension List {
     @ViewBuilder
     func refreshable(_ isRefreshable: Bool, perform action: @escaping @Sendable () async -> Void) -> some View {
         if isRefreshable {
-            self.refreshable(action: action)
+            refreshable(action: action)
         } else {
             self
         }
@@ -113,7 +112,6 @@ private extension List {
 }
 
 private extension PaginatedList {
-    
     func initialFetch() async {
         state = .loading
         do {
@@ -138,5 +136,3 @@ private extension PaginatedList {
         }
     }
 }
-
-
