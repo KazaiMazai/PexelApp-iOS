@@ -9,15 +9,19 @@ import SwiftUI
 import DesignSystem
 import SwiftUIExtensions
 
+@MainActor
 public struct MainFeedScreen: View {
-    @Environment(PhotosAPIService.self) var photosAPIService: PhotosAPIService
+    @Environment(PhotosService.self) var photosService: PhotosService
     
     public init() {
         
     }
     
     public var body: some View {
-        MainFeedListView(fetch: photosAPIService.fetch)
+        MainFeedListView(
+            fetch: photosService.fetch,
+            find: photosService.find
+        )
     }
 }
 
@@ -26,11 +30,8 @@ struct MainFeedListView: View {
     @Namespace var detailViewNamespace
     @State var selectedPicture: Picture?
     
-    let fetch: (_ page: Int?) async throws -> ([Picture], Int?)
-    
-    init(fetch: @escaping (_ page: Int?) async throws -> ([Picture], Int?)) {
-        self.fetch = fetch
-    }
+    let fetch: (_ page: Int?) async throws -> ([Picture.ID], Int?)
+    let find: (Picture.ID) -> Picture?
     
     var body: some View {
         PaginatedList(
@@ -42,56 +43,57 @@ struct MainFeedListView: View {
             fetch: fetch
         )
         .setRefreshable(true)
-        .modal($selectedPicture) { picture, ratio in
-            ImageWithText(
-                picture: picture
-            )
-            .card(with: ratio)
-            .matchedGeometryEffect(id: picture, in: detailViewNamespace, isSource: selectedPicture != nil)
+        .modal($selectedPicture,
+               animation: .theme.interactiveSpring) { pictureId, progress in
+            pictureDetailView(pictureId, presentationProgress: progress)
         }
     }
 }
 
 private extension MainFeedListView {
-    func content(_ pictures: [Picture]) -> some View {
-        ForEach(pictures.indices, id: \.self) { index in
-            Button(action: {
-                select(pictures[index])
-            }, label: {
-                ImageWithText(
-                    picture: pictures[index]
-                )
-                .card()
-                .matchedGeometryEffect(id: pictures[index], in: detailViewNamespace, isSource: selectedPicture == nil)
-            })
-            .buttonStyle(ScaleButtonStyle())
-            .listRowInsets(
-                EdgeInsets(
-                    top: .zero,
-                    leading: .theme.padddings.large,
-                    bottom: .theme.padddings.xxxLarge,
-                    trailing: .theme.padddings.large
-                )
+    func content(_ pictures: [Picture.ID]) -> some View {
+        ForEach(pictures, id: \.self) { pictureId in
+            pictureListView(
+                pictureId
             )
-            .listRowSeparator(.hidden)
+            .listRowModifier()
         }
     }
     
+    @ViewBuilder
+    func pictureListView(_ id: Picture.ID) -> some View {
+        switch find(id) {
+        case .some(let picture):
+            Button(action: {
+                select(picture)
+            }, label: {
+                ImageWithText(
+                    picture: picture
+                )
+                .cardStyle()
+                .matchedGeometryEffect(id: id, in: detailViewNamespace, isSource: selectedPicture == nil)
+            })
+            .buttonStyle(ScaleButtonStyle())
+        case .none:
+            EmptyView()
+        }
+    }
+    
+    @ViewBuilder
+    func pictureDetailView(_ picture: Picture, presentationProgress: CGFloat) -> some View {
+        ImageWithText(
+            picture: picture
+        )
+        .cardStyle(with: presentationProgress)
+        .matchedGeometryEffect(id: picture.id, in: detailViewNamespace, isSource: selectedPicture != nil)
+    }
+    
     func select(_ picture: Picture) {
-        withAnimation(.interactiveSpring(
-            response: 0.6,
-            dampingFraction: 0.7,
-            blendDuration: 0.7)) {
-                
-                selectedPicture = picture
-            }
+        withAnimation(.theme.interactiveSpring) {
+            selectedPicture = picture
+        }
     }
-    
-    func pictureCardView(_ picture: Picture) -> some View {
-        ImageWithText(picture: picture)
-            .card()
-    }
-    
+
     @ViewBuilder
     func footer(_ state: NextPageState) -> some View {
         switch state {
@@ -129,9 +131,24 @@ private extension MainFeedListView {
 extension ImageWithText {
     init(picture: Picture) {
         self.init(
-            image: picture.mediumAvailable
-                .map { .url($0) } ?? .placeholder(text: "No image"),
+            image: picture.mediumAvailable.map {
+                .url($0)
+            } ?? .placeholder(text: "No image"),
             title: picture.photographer
         )
+    }
+}
+
+fileprivate extension View {
+    func listRowModifier() -> some View {
+        self.listRowInsets(
+            EdgeInsets(
+                top: .zero,
+                leading: .theme.padddings.large,
+                bottom: .theme.padddings.xxxLarge,
+                trailing: .theme.padddings.large
+            )
+        )
+        .listRowSeparator(.hidden)
     }
 }

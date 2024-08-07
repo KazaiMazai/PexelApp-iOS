@@ -8,8 +8,9 @@
 import Foundation
 
 public struct Picture: Identifiable, Hashable {
+    public typealias ID = String
     
-    public let id: String
+    public let id: ID
     public let photographer: String
     
     public let width: Double
