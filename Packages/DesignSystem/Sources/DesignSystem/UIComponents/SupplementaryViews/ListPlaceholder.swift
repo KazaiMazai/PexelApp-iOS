@@ -23,5 +23,4 @@ public struct ListPlaceholder: View {
                 .foregroundStyle(.theme.title)
         }
     }
-    
 }

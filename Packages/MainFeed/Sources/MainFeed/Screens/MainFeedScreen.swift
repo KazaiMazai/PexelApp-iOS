@@ -21,6 +21,7 @@ public struct MainFeedScreen: View {
     }
 }
 
+@MainActor
 struct MainFeedListView: View {
     @Namespace var detailViewNamespace
     @State var selectedPicture: Picture?
@@ -41,12 +42,11 @@ struct MainFeedListView: View {
             fetch: fetch
         )
         .setRefreshable(true)
-        .modal($selectedPicture) { picture, opacity in
+        .modal($selectedPicture) { picture, ratio in
             ImageWithText(
-                viewModel: ImageWithText.ViewModel(picture: picture)
+                picture: picture
             )
-            .cornerRadius((1.0 - opacity) * .theme.corners.large)
-            .shadow(.theme.largeDropShadow)
+            .card(with: ratio)
             .matchedGeometryEffect(id: picture, in: detailViewNamespace, isSource: selectedPicture != nil)
         }
     }
@@ -58,11 +58,10 @@ private extension MainFeedListView {
             Button(action: {
                 select(pictures[index])
             }, label: {
-                ImageWithTextCard(
-                    viewModel: ImageWithText.ViewModel(
-                        picture: pictures[index]
-                    )
+                ImageWithText(
+                    picture: pictures[index]
                 )
+                .card()
                 .matchedGeometryEffect(id: pictures[index], in: detailViewNamespace, isSource: selectedPicture == nil)
             })
             .buttonStyle(ScaleButtonStyle())
@@ -89,11 +88,8 @@ private extension MainFeedListView {
     }
     
     func pictureCardView(_ picture: Picture) -> some View {
-        ImageWithTextCard(
-            viewModel: ImageWithText.ViewModel(
-                picture: picture
-            )
-        )
+        ImageWithText(picture: picture)
+            .card()
     }
     
     @ViewBuilder
@@ -130,7 +126,7 @@ private extension MainFeedListView {
     }
 }
 
-extension ImageWithText.ViewModel {
+extension ImageWithText {
     init(picture: Picture) {
         self.init(
             image: picture.mediumAvailable
