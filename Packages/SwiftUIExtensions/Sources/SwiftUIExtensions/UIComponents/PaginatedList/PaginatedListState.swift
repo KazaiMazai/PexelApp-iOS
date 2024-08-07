@@ -17,6 +17,34 @@ public enum NextPageState {
     init<Cursor>(cursor: Cursor?) {
         self = cursor == nil ? .done : .hasMore
     }
+    
+    var isDone: Bool {
+        if case .done = self {
+            return true
+        }
+        return false
+    }
+    
+    var isHavingMore: Bool {
+        if case .hasMore = self {
+            return true
+        }
+        return false
+    }
+    
+    var isLoading: Bool {
+        if case .loading = self {
+            return true
+        }
+        return false
+    }
+    
+    var isError: Bool {
+        if case .error = self {
+            return true
+        }
+        return false
+    }
 }
 
 enum PaginatedListState<T: Hashable, Cursor> {
