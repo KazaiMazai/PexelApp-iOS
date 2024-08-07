@@ -99,7 +99,7 @@ private extension MainFeedListView {
     @ViewBuilder
     func footer(_ state: NextPageState) -> some View {
         switch state {
-        case .none:
+        case .hasMore:
             PaginationFooter(state: .initial).id(UUID())
                 .frame(maxWidth: .infinity, alignment: .center)
         case .loading:
@@ -111,19 +111,20 @@ private extension MainFeedListView {
         }
     }
     
-    func errorView(_ error: Error) -> some View {
+    func errorView(_ error: Error, refresh: PaginatedList.Refresh) -> some View {
         Text("\(Image(systemName: "xmark.circle.fill")) Couldn't load the feed")
     }
     
     func placeholder() -> some View {
         HStack(spacing: .theme.padddings.large) {
             ProgressView()
-            Text("Loading")
+            Text("Loading Photos")
         }
     }
     
-    func empty() -> some View {
-        Color.clear
+    func empty(refresh: @escaping PaginatedList.Refresh) -> some View {
+        Button(action: { Task { await refresh() } },
+               label: { Text("No Photos. Tap to relaod.") })
     }
 }
 

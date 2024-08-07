@@ -9,7 +9,8 @@ import Foundation
 import Collections
 
 public enum NextPageState {
-    case none
+    case done
+    case hasMore
     case loading
     case error(Error)
 }
@@ -62,7 +63,7 @@ extension PaginatedListState {
 
 extension PaginatedListState {
     mutating func setItems(_ items: [T], cursor: Cursor?) {
-       self = items.isEmpty ? .empty : .content(OrderedSet(items), nextCursor: cursor, nextPage: .none)
+       self = items.isEmpty ? .empty : .content(OrderedSet(items), nextCursor: cursor, nextPage: .hasMore)
     }
     
     mutating func appendItems(_ items: [T], cursor: Cursor?) {
@@ -72,7 +73,7 @@ extension PaginatedListState {
         }
         
         currentItems.append(contentsOf: items)
-        self = .content(currentItems, nextCursor: cursor, nextPage: .none)
+        self = .content(currentItems, nextCursor: cursor, nextPage: .hasMore)
     }
     
     mutating func setError(_ error: Error) {
