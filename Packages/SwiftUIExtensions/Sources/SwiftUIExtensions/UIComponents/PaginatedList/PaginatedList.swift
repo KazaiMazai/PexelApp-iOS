@@ -47,7 +47,7 @@ public struct PaginatedList<Data: Hashable,
                     Task { await fetchNextPage() }
                 }
             }
-            .refreshable(refreshable, perform: { await initialFetch() })
+            .refreshable(refreshable, perform: { await refreshFetch() })
             .scrollDismissesKeyboard(.immediately)
             .listStyle(.plain)
         case .error(error: let error):
@@ -112,6 +112,15 @@ private extension List {
 }
 
 private extension PaginatedList {
+    func refreshFetch() async {
+        do {
+            let result = try await fetch(nil)
+            state.setItems(result.items, cursor: result.cursor)
+        } catch {
+            state.setError(error)
+        }
+    }
+    
     func initialFetch() async {
         state = .loading
         do {
