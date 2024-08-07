@@ -12,22 +12,22 @@ import MainFeed
 // swiftlint:disable:next type_name
 public struct DI {
     public let pexelAPIClient: Client
-    public let photosAPIService: PhotosService
+    public let photosService: PhotosService
     public let asyncImageURLSession: URLSession
 
     public init(pexelAPIClient: Client,
-                photosAPIService: PhotosService,
+                photosService: PhotosService,
                 asyncImageURLSession: URLSession) {
 
         self.pexelAPIClient = pexelAPIClient
-        self.photosAPIService = photosAPIService
+        self.photosService = photosService
         self.asyncImageURLSession = asyncImageURLSession
     }
 }
 
 public extension View {
     func environment(diContainer: DI) -> some View {
-        self.environment(diContainer.photosAPIService)
+        self.environment(diContainer.photosService)
             .asyncImageURLSession(diContainer.asyncImageURLSession)
     }
 }
