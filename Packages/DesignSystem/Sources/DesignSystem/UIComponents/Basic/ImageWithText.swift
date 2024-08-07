@@ -50,17 +50,6 @@ public struct ImageWithText: View {
     }
 }
 
-public extension ImageWithText {
-    func card() -> some View {
-        self.cornerRadius(.theme.corners.large)
-            .shadow(.theme.largeDropShadow)
-    }
-    
-    func card(with cornerRatio: CGFloat) -> some View {
-        self.cornerRadius((1.0 - cornerRatio) * .theme.corners.large)
-            .shadow(.theme.largeDropShadow)
-    }
-}
 
 private extension ImageWithText {
     func urlImageView(_ url: URL) -> some View {

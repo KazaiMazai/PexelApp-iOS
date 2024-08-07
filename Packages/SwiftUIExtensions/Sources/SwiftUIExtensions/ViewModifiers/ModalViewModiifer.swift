@@ -19,6 +19,7 @@ public extension View {
 
 struct ModalViewModifier<Destination: View, Bindable: Identifiable>: ViewModifier {
     @State private var offset = CGSize.zero
+    
     @Binding var value: Bindable?
     
     let destination: (_ value: Bindable, _ opacity: CGFloat) -> Destination
@@ -31,10 +32,10 @@ struct ModalViewModifier<Destination: View, Bindable: Identifiable>: ViewModifie
             if let value {
                 Color.white
                     .ignoresSafeArea()
-                    .opacity(overlayOpacity)
-                    .animation(.easeInOut, value: overlayOpacity)
+                    .opacity(offsetProgress)
+                    .animation(.easeInOut, value: offsetProgress)
                 
-                destination(value, overlayOpacity)
+                destination(value, offsetProgress)
                     .offset(offset)
                     .ignoresSafeArea()
                     .gesture(
@@ -43,7 +44,7 @@ struct ModalViewModifier<Destination: View, Bindable: Identifiable>: ViewModifie
                                 offset = gesture.translation
                             }
                             .onEnded { _ in
-                                guard offsetLimit.isLess(than: currentMaxOffset) else {
+                                guard offsetLimit.isLess(than: absoluteOffset) else {
                                     withAnimation(.interactiveSpring(
                                         response: 0.6,
                                         dampingFraction: 0.7,
@@ -67,13 +68,15 @@ struct ModalViewModifier<Destination: View, Bindable: Identifiable>: ViewModifie
         }
     }
     
-    private var currentMaxOffset: CGFloat {
+    private var absoluteOffset: CGFloat {
         max(abs(offset.width), abs(offset.height))
     }
     
+  
+    
     private let offsetLimit: CGFloat = 50
     
-    private var overlayOpacity: CGFloat {
-        min(1.0, max(0.0, 1.0 - (currentMaxOffset / offsetLimit)))
+    private var offsetProgress: CGFloat {
+        min(1.0, max(0.0, 1.0 - (absoluteOffset / (offsetLimit * 0.5))))
     }
 }
