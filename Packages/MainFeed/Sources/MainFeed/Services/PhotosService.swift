@@ -11,21 +11,21 @@ import PexelAPI
 @Observable
 public final class PhotosService {
     private var storage: [Picture.ID: Picture] = [:]
-    
+
     private let client: PexelAPI.Client
     private let urlSession: URLSession
-    
+
     public init(client: PexelAPI.Client,
                 urlSession: URLSession) {
-        
+
         self.client = client
         self.urlSession = urlSession
     }
-    
+
     func find(_ id: Picture.ID) -> Picture? {
         storage[id]
     }
-    
+
     func fetch(page: Int?) async throws -> ([Picture.ID], Int?) {
         let page = page ?? 0
         let limit = 10

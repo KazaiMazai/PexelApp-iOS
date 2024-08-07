@@ -36,31 +36,31 @@ public extension Corners {
     var xxSmall: CGFloat {
         step
     }
-    
+
     var xSmall: CGFloat {
         step * 2
     }
-    
+
     var xmSmall: CGFloat {
         step * 3
     }
-    
+
     var small: CGFloat {
         step * 4
     }
-    
+
     var mediumS: CGFloat {
         step * 5
     }
-    
+
     var medium: CGFloat {
         step * 8
     }
-    
+
     var large: CGFloat {
         step * 9
     }
-    
+
     var huge: CGFloat {
         step * 20
     }

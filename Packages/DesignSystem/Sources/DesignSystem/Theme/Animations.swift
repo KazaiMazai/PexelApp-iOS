@@ -23,4 +23,3 @@ public extension ThemeAnimations {
             blendDuration: 0.7)
     }()
 }
-

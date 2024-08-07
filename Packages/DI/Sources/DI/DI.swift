@@ -9,15 +9,16 @@ import SwiftUI
 import PexelAPI
 import MainFeed
 
+// swiftlint:disable:next type_name
 public struct DI {
     public let pexelAPIClient: Client
     public let photosAPIService: PhotosService
     public let asyncImageURLSession: URLSession
-    
+
     public init(pexelAPIClient: Client,
                 photosAPIService: PhotosService,
                 asyncImageURLSession: URLSession) {
-        
+
         self.pexelAPIClient = pexelAPIClient
         self.photosAPIService = photosAPIService
         self.asyncImageURLSession = asyncImageURLSession
@@ -30,6 +31,3 @@ public extension View {
             .asyncImageURLSession(diContainer.asyncImageURLSession)
     }
 }
- 
-
-

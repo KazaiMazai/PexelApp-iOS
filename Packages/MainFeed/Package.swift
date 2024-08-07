@@ -12,20 +12,20 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "MainFeed",
-            targets: ["MainFeed"]),
+            targets: ["MainFeed"])
     ],
     dependencies: [
         .package(name: "DomainModel", path: "../DomainModel"),
         .package(name: "DesignSystem", path: "../DesignSystem"),
         .package(name: "SwiftUIExtensions", path: "../SwiftUIExtensions"),
         .package(name: "PexelAPI", path: "../PexelAPI")
-        
+
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "MainFeed", 
+            name: "MainFeed",
             dependencies: [
                  "DomainModel",
                  "DesignSystem",
@@ -35,6 +35,6 @@ let package = Package(
         ),
         .testTarget(
             name: "MainFeedTests",
-            dependencies: ["MainFeed"]),
+            dependencies: ["MainFeed"])
     ]
 )

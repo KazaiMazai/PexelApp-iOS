@@ -17,13 +17,13 @@ public struct EmptyListView: View {
         self.message = message
         self.buttonTitle = buttonTitle
     }
-    
+
     public var body: some View {
         VStack(spacing: .theme.padddings.xLarge) {
             Text(message)
                 .font(.theme.title3)
                 .foregroundStyle(.theme.title)
-            
+
             Button(
                 action: { Task { await refresh() } },
                 label: {
@@ -31,7 +31,7 @@ public struct EmptyListView: View {
                         .font(.theme.body)
                         .foregroundStyle(.theme.accent)
                 }
-                
+
             )
         }
     }

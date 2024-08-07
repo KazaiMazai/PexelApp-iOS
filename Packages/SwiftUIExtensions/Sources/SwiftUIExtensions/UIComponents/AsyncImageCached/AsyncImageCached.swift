@@ -10,17 +10,17 @@ import SwiftUI
 @MainActor
 public struct AsyncImageCached<Content: View>: View {
     @Environment(\.asyncImageURLSession) var urlSession
-    
+
     @State private var fetchResult: (url: URL, image: Result<(UIImage), Error>)?
     @ViewBuilder private let content: (AsyncImagePhase) -> Content
-    
+
     private let url: URL
-    
+
     public init(url: URL, @ViewBuilder content: @escaping (AsyncImagePhase) -> Content) {
         self.url = url
         self.content = content
     }
-    
+
     public var body: some View {
         if let fetchResult, fetchResult.url == url {
             contentFor(fetchResult.image)
@@ -43,7 +43,7 @@ private extension AsyncImageCached {
             await downloadImage()
         }
     }
-    
+
     func contentFor(_ result: Result<UIImage, Error>) -> some View {
         switch result {
         case .success(let image):
@@ -52,7 +52,7 @@ private extension AsyncImageCached {
             content(.failure(error))
         }
     }
-   
+
     func downloadImage() async {
         do {
             let cache = urlSession.configuration.urlCache
@@ -61,13 +61,13 @@ private extension AsyncImageCached {
                 self.fetchResult = (url, .success(image))
                 return
             }
-            
+
             let (data, _) = try await urlSession.data(from: url)
             guard let image = UIImage(data: data) else {
                 self.fetchResult = (url, .failure(Errors.imageDataIsMalformed))
                 return
             }
-            
+
             self.fetchResult = (url, .success(image))
         } catch {
             self.fetchResult = (url, .failure(Errors.couldNotRetrieveImage))

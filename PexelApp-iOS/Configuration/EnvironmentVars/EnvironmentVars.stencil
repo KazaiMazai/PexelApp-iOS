@@ -6,3 +6,4 @@ struct EnvironmentVars {
     static let pexelAPIKey = "{{ argument.PEXEL_API_KEY }}"
     
 }
+// swiftlint:enable all

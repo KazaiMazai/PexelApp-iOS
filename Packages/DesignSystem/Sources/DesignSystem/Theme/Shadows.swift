@@ -7,12 +7,14 @@
 
 import SwiftUI
 
+// swiftlint:disable identifier_name
 public struct Shadow {
     let color: Color
     let radius: CGFloat
     let x: CGFloat
     let y: CGFloat
 }
+// swiftlint:enable identifier_name
 
 public extension View {
     func shadow(_ shadow: Shadow) -> some View {
@@ -37,7 +39,7 @@ public extension ThemeShadows {
     static var largeDropShadow: Shadow {
         Shadow.init(color: .theme.shadow, radius: 50, x: 0, y: 10)
     }
-    
+
     static var smallDropShadow: Shadow {
         Shadow.init(color: .theme.shadow, radius: 20, x: 0, y: 10)
     }
