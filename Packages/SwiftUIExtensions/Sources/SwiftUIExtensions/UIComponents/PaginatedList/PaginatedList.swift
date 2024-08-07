@@ -44,7 +44,7 @@ public struct PaginatedList<Data: Hashable,
         self.empty = empty
         self.fetch = fetch
     }
-    
+
     public var body: some View {
         switch state {
         case .loading:
