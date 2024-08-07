@@ -36,7 +36,6 @@
 
 /* Begin PBXFileReference section */
 		EA8505AE2C602FC600BD1239 /* MainFeed */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MainFeed; sourceTree = "<group>"; };
-		EA8505AF2C60337A00BD1239 /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
 		EA8505B02C60337A00BD1239 /* EnvironmentVars.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVars.generated.swift; sourceTree = "<group>"; };
 		EA8505B52C60365700BD1239 /* DI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DI; sourceTree = "<group>"; };
 		EA8505B62C60416600BD1239 /* DomainModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DomainModel; sourceTree = "<group>"; };
@@ -50,7 +49,6 @@
 		EAD322712C5FFA9900D6B3A5 /* PexelApp_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp_iOSUITests.swift; sourceTree = "<group>"; };
 		EAD322732C5FFA9900D6B3A5 /* PexelApp_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelApp_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EAD322862C5FFD9200D6B3A5 /* PexelAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PexelAPI; sourceTree = "<group>"; };
-		EAD322872C6000D000D6B3A5 /* UIKitExtensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UIKitExtensions; sourceTree = "<group>"; };
 		EAD322882C60010600D6B3A5 /* SwiftUIExtensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SwiftUIExtensions; sourceTree = "<group>"; };
 		EAD3228B2C60051600D6B3A5 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DesignSystem; sourceTree = "<group>"; };
 		EAD3228C2C600B4400D6B3A5 /* ResourcesCatalog */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ResourcesCatalog; sourceTree = "<group>"; };
@@ -63,6 +61,7 @@
 		EAD322A52C600F5400D6B3A5 /* codegen_strings_and_assets.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = codegen_strings_and_assets.sh; sourceTree = "<group>"; };
 		EAD322A62C600F5400D6B3A5 /* env_vars_export.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = env_vars_export.sh; sourceTree = "<group>"; };
 		EAD322AB2C60106600D6B3A5 /* sourcery */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = sourcery; sourceTree = "<group>"; };
+		EADB4CDB2C6401B800564897 /* env.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +173,6 @@
 				EAD3228C2C600B4400D6B3A5 /* ResourcesCatalog */,
 				EAD3228B2C60051600D6B3A5 /* DesignSystem */,
 				EAD322882C60010600D6B3A5 /* SwiftUIExtensions */,
-				EAD322872C6000D000D6B3A5 /* UIKitExtensions */,
 				EAD322862C5FFD9200D6B3A5 /* PexelAPI */,
 			);
 			path = Packages;
@@ -238,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				EAD3229E2C600E9700D6B3A5 /* env-example.xcconfig */,
-				EA8505AF2C60337A00BD1239 /* env.xcconfig */,
+				EADB4CDB2C6401B800564897 /* env.xcconfig */,
 				EA8505B02C60337A00BD1239 /* EnvironmentVars.generated.swift */,
 				EAD3229C2C600E9700D6B3A5 /* EnvironmentVars.stencil */,
 			);

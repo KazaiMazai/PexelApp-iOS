@@ -9,14 +9,13 @@ import SwiftUI
 import DesignSystem
 import SwiftUIExtensions
 
-@MainActor
 public struct MainFeedScreen: View {
     @Environment(PhotosService.self) var photosService: PhotosService
-    
+
     public init() {
-        
+
     }
-    
+
     public var body: some View {
         MainFeedListView(
             fetch: photosService.fetch,
@@ -25,14 +24,13 @@ public struct MainFeedScreen: View {
     }
 }
 
-@MainActor
 struct MainFeedListView: View {
     @Namespace var detailViewNamespace
     @State var selectedPicture: Picture?
-    
+
     let fetch: (_ page: Int?) async throws -> ([Picture.ID], Int?)
     let find: (Picture.ID) -> Picture?
-    
+
     var body: some View {
         PaginatedList(
             content: content,
@@ -59,7 +57,7 @@ private extension MainFeedListView {
             .listRowModifier()
         }
     }
-    
+
     @ViewBuilder
     func pictureListView(_ id: Picture.ID) -> some View {
         switch find(id) {
@@ -78,7 +76,7 @@ private extension MainFeedListView {
             EmptyView()
         }
     }
-    
+
     @ViewBuilder
     func pictureDetailView(_ picture: Picture, presentationProgress: CGFloat) -> some View {
         ImageWithText(
@@ -87,7 +85,7 @@ private extension MainFeedListView {
         .cardStyle(with: presentationProgress)
         .matchedGeometryEffect(id: picture.id, in: detailViewNamespace, isSource: selectedPicture != nil)
     }
-    
+
     func select(_ picture: Picture) {
         withAnimation(.theme.interactiveSpring) {
             selectedPicture = picture
@@ -110,15 +108,15 @@ private extension MainFeedListView {
                 .frame(maxWidth: .infinity, alignment: .center)
         }
     }
-    
+
     func errorView(_ error: Error, refresh: PaginatedList.Refresh) -> some View {
         ListErrorView(message: "Couldn't load the feed")
     }
-    
+
     func placeholder() -> some View {
         ListPlaceholder(title: "Loading Photos")
     }
-    
+
     func empty(refresh: @escaping PaginatedList.Refresh) -> some View {
         EmptyListView(
             refresh: refresh,

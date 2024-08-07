@@ -22,13 +22,12 @@ public extension ThemeFonts {
     static var title2: Font {
         Font.title2
     }
-    
+
     static var title3: Font {
         Font.title3
     }
-    
+
     static var body: Font {
         Font.body
     }
 }
-

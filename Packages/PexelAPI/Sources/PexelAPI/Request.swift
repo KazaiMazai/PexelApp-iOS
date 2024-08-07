@@ -18,7 +18,7 @@ public enum RequestType<Result: Decodable> {
 public struct Request<Result: Decodable> {
     public let type: RequestType<Result>
     public let urlRequest: URLRequest
-    
+
     public init(urlRequest: URLRequest,
                 type: RequestType<Result>) {
         self.urlRequest = urlRequest
@@ -34,7 +34,7 @@ extension Client {
         let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
         return jsonObject.flatMap { $0 as? [String: Any] }
     }
-    
+
     func asURLQueryParameters<T: Encodable>(_ parameters: T) -> [URLQueryItem] {
         asDictionary(parameters)?
             .map { URLQueryItem(name: $0.key, value: String(describing: $0.value)) } ?? []

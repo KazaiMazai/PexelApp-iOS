@@ -8,22 +8,23 @@
 import Foundation
 
 public struct Picture: Identifiable, Hashable {
+    // swiftlint:disable:next type_name
     public typealias ID = String
-    
+
     public let id: ID
     public let photographer: String
-    
+
     public let width: Double
     public let height: Double
-    
+
     public let original: URL?
     public let large2x: URL?
     public let large: URL?
     public let medium: URL?
     public let small: URL?
     public let tiny: URL?
-    
-    public init(id: String, 
+
+    public init(id: String,
                 photographer: String,
                 width: Double,
                 height: Double,
@@ -33,7 +34,7 @@ public struct Picture: Identifiable, Hashable {
                 medium: URL? = nil,
                 small: URL? = nil,
                 tiny: URL? = nil) {
-        
+
         self.id = id
         self.photographer = photographer
         self.width = width
@@ -45,19 +46,18 @@ public struct Picture: Identifiable, Hashable {
         self.small = small
         self.tiny = tiny
     }
-    
+
     public var largestAvailable: URL? {
         [large2x, large, medium, small, tiny]
             .compactMap { $0 }
             .first
-        
+
     }
-    
+
     public var mediumAvailable: URL? {
         [medium, small, tiny]
             .compactMap { $0 }
             .first
-        
+
     }
 }
-
