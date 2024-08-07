@@ -17,7 +17,9 @@ public enum NextPageState {
     init<Cursor>(cursor: Cursor?) {
         self = cursor == nil ? .done : .hasMore
     }
-    
+}
+
+extension NextPageState {
     var isDone: Bool {
         if case .done = self {
             return true
