@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 public struct AsyncImageCached<Content: View>: View {
     @Environment(\.asyncImageURLSession) var urlSession
 

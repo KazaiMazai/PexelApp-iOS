@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 public struct PaginatedList<Data: Hashable,
                             Cursor,
                             Content: View,

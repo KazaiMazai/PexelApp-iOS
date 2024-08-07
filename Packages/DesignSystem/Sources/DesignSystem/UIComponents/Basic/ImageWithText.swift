@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftUIExtensions
 
-@MainActor
 public struct ImageWithText: View {
     private let image: ImageSource
     private let text: String

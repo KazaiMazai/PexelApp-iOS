@@ -9,7 +9,6 @@ import SwiftUI
 import DesignSystem
 import SwiftUIExtensions
 
-@MainActor
 public struct MainFeedScreen: View {
     @Environment(PhotosService.self) var photosService: PhotosService
 
@@ -25,7 +24,6 @@ public struct MainFeedScreen: View {
     }
 }
 
-@MainActor
 struct MainFeedListView: View {
     @Namespace var detailViewNamespace
     @State var selectedPicture: Picture?
